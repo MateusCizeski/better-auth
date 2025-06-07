@@ -1,0 +1,30 @@
+/src/generated/prisma
+# Node.js
+node_modules/
+dist/
+.env
+
+# TypeScript
+*.tsbuildinfo
+
+# Prisma
+/prisma/dev.db
+/prisma/dev.db-journal
+/prisma/migrations/
+.prisma/
+
+# Logs
+logs/
+*.log
+
+# PM2 logs (se usar)
+pids/
+*.pid
+*.seed
+*.dump
+
+# VSCode
+.vscode/
+
+# MacOS
+.DS_Store
