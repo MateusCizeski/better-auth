@@ -15,9 +15,17 @@ export async function createUser(req: Request, res: Response, next: NextFunction
 
 export async function listUsers(req: Request, res: Response, next: NextFunction) {
     try {
-        const users = await userService.list();
+        const users = await userService.listUsers();
 
         res.json(users);
+    }catch(err) {
+        next(err);
+    }
+}
+
+export async function listById(req: Request, res: Response, next: NextFunction) {
+    try {
+        const user = await userService.listById(req.body);
     }catch(err) {
         next(err);
     }

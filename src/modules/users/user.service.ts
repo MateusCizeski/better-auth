@@ -13,7 +13,19 @@ export const userService = {
         return user;
     },
 
-    async list() {
-         return prisma.users.findMany();
-    } 
+    async listUsers() {
+        const users = await prisma.users.findMany();
+
+        return users;
+    },
+
+    async listById({ user_id }: any) {
+        const user = await prisma.users.findFirst({
+            where: {
+                id: user_id
+            }
+        });
+
+        return user;
+    }
 }

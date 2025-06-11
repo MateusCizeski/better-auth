@@ -1,7 +1,8 @@
 import { Router } from "express";
-import { createUser, listUsers } from "./user.controller";
+import { createUser, listById, listUsers } from "./user.controller";
 
 export const userRoutes = Router();
 
-userRoutes.post('/', createUser);
-userRoutes.get('/', createUser);
+userRoutes.post('/createUser', createUser);
+userRoutes.get('/listUsers', listUsers);
+userRoutes.get('/listById', listById);
