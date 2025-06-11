@@ -1,8 +1,11 @@
-import pino from "pino";
+import pino from 'pino';
 
 export const logger = pino({
-    transport: {
-        target: 'pino-pretty'
-    },
-    base: undefined
+  transport: {
+    target: 'pino-pretty',
+    options: {
+      colorize: true
+    }
+  },
+  base: undefined
 });

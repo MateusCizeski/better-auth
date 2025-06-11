@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "ts-node-dev src/server.ts",
+    "dev": "ts-node-dev --transpile-only src/server.ts",
     "build": "tsc",
     "start": "node dist/server.js",
     "pm2:start": "pm2 start ecosystem.config.js",
@@ -13,18 +13,20 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "module",
+  "type": "commonjs",
   "dependencies": {
     "@prisma/client": "^6.9.0",
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
     "pino": "^9.7.0",
+    "pino-pretty": "^13.0.0",
     "zod": "^3.25.56"
   },
   "devDependencies": {
     "@types/express": "^5.0.3",
     "@types/node": "^22.15.30",
     "prisma": "^6.9.0",
+    "ts-node": "^10.9.2",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.8.3"
   }

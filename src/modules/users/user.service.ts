@@ -3,10 +3,17 @@ import { CreateUserInput } from "./user.schema";
 
 export const userService = {
     async create(data: CreateUserInput) {
-        return prisma.user.create({ data });
+        const user = await prisma.users.create({
+            data: {
+                name: data.name,
+                email: data.email
+            }
+        });
+
+        return user;
     },
 
     async list() {
-         return prisma.user.findMany();
+         return prisma.users.findMany();
     } 
 }
