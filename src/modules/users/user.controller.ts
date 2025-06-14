@@ -25,7 +25,10 @@ export async function listUsers(req: Request, res: Response, next: NextFunction)
 
 export async function listById(req: Request, res: Response, next: NextFunction) {
     try {
-        const user = await userService.listById(req.body);
+        const { user_id } = req.body;
+        const user = await userService.listById(user_id);
+
+        res.json(user);
     }catch(err) {
         next(err);
     }

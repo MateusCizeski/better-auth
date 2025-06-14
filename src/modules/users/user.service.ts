@@ -19,7 +19,7 @@ export const userService = {
         return users;
     },
 
-    async listById({ user_id }: any) {
+    async listById(user_id: string) {        
         const user = await prisma.users.findFirst({
             where: {
                 id: user_id
