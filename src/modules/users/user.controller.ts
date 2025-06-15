@@ -33,3 +33,26 @@ export async function listById(req: Request, res: Response, next: NextFunction) 
         next(err);
     }
 }
+
+export async function updateUser(req: Request, res: Response, next: NextFunction) {
+    try {
+        const { user_id, name, email } = req.body;
+        const user = await userService.updateUser({ user_id, name, email });
+
+        res.json(user);
+    }catch(err) {
+        next(err);
+    }
+}
+
+export async function deleteUser(req: Request, res: Response, next: NextFunction) {
+    try {
+        const { user_id } = req.body;
+        
+        await userService.deleteUser(user_id);
+
+        res.json();
+    }catch(err) {
+        next(err);
+    }
+}
