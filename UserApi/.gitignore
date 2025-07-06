@@ -65,3 +65,26 @@ TestResults/
 
 # Ignore todos os appsettings, exceto o principal
 appsettings.json
+
+# Ignorar binários, arquivos intermediários e pastas de build
+**/bin/
+**/obj/
+**/.vs/
+
+*.dbmdl
+*.vsp
+*.vspx
+*.vspscc
+*.vssscc
+*.pdb
+*.mdb
+*.svclog
+*.sdf
+*.cache
+*.ilk
+*.obj
+*.tlog
+*.idb
+*.iobj
+*.ipdb
+*.iuser
