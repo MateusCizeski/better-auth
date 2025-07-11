@@ -1,5 +1,4 @@
-﻿using Application.User;
-using Application.User.DTOs;
+﻿using Application.Users;
 using Microsoft.AspNetCore.Mvc;
 
 namespace UserApi.Controllers

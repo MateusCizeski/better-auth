@@ -34,6 +34,9 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
+              "C:\\Desenvolvimento\\user-api\\UserApi\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Desenvolvimento\\user-api\\UserApi\\Domain\\Domain.csproj"
+              },
               "C:\\Desenvolvimento\\user-api\\UserApi\\Infrastructure\\Infrastructure.csproj": {
                 "projectPath": "C:\\Desenvolvimento\\user-api\\UserApi\\Infrastructure\\Infrastructure.csproj"
               }

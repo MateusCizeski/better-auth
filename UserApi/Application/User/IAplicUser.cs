@@ -1,6 +1,4 @@
-﻿using Application.User.DTOs;
-
-namespace Application.User
+﻿namespace Application.Users
 {
     public interface IAplicUser
     {

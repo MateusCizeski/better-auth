@@ -1,4 +1,4 @@
-﻿namespace Application.User.DTOs
+﻿namespace Application.Users
 {
     public class CreateUserDTO
     {
