@@ -13,7 +13,7 @@ namespace Infrastructure.Data
         {
             modelBuilder.Entity<User>(entity =>
             {
-                entity.ToTable("Users");
+                entity.ToTable("users");
                 entity.HasKey(u => u.Id);
                 entity.HasIndex(u => u.Email).IsUnique();
                 entity.Property(u => u.Name).IsRequired().HasMaxLength(100);

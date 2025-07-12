@@ -1,4 +1,5 @@
-﻿using Infrastructure.Repositories;
+﻿using Domain.User.DTOs;
+using Infrastructure.Repositories;
 
 namespace Application.Users
 {
@@ -13,11 +14,25 @@ namespace Application.Users
             _mapperUser = mapperUser;
         }
 
-        public void CreateUser(CreateUserDTO dto)
+        public UserDetailDTO CreateUser(CreateUserDTO dto)
         {
-            var user = _mapperUser.NewUser(dto);
+            var passwordHash = BCrypt.Net.BCrypt.HashPassword(dto.Password);
+            var user = _mapperUser.NewUser(dto, passwordHash);
 
-            _repUser.AddAsync(user);
+            return _repUser.CreateUser(user);
+        }
+
+        public UserDetailDTO DetailUser(Guid id)
+        {
+            return _repUser.DetailUser(id);
+        }
+
+        public UserDetailDTO UpdateUser(Guid id, UpdateUserDTO dto)
+        {
+            var user = _repUser.SearchUserById(id);
+            _mapperUser.UpdateUser(user, dto);
+
+            _repUser.UpdateUser(user);
         }
     }
 }

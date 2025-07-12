@@ -1,7 +1,11 @@
-﻿namespace Application.Users
+﻿using Domain.User.DTOs;
+
+namespace Application.Users
 {
     public interface IAplicUser
     {
-        void CreateUser(CreateUserDTO dto);
+        UserDetailDTO CreateUser(CreateUserDTO dto);
+        UserDetailDTO DetailUser(Guid id);
+        UserDetailDTO UpdateUser(Guid id, UpdateUserDTO dto);
     }
 }

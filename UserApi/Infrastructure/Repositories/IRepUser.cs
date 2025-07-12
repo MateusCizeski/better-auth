@@ -6,9 +6,9 @@ namespace Infrastructure.Repositories
     public interface IRepUser
     {
         UserDetailDTO DetailUser(Guid id);
-        Task AddAsync(User user);
-        Task UpdateAsync(User user);
-        Task DeleteAsync(User user);
+        UserDetailDTO CreateUser(User user);
+        UserDetailDTO UpdateUser(User user);
         Task AuthUser(AuthUserDTO dto);
+        User SearchUserById(Guid id);
     }
 }

@@ -15,15 +15,30 @@ namespace UserApi.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateUser(CreateUserDTO dto)
+        public IActionResult CreateUser([FromBody] CreateUserDTO dto)
         {
             try
             {
-                _aplicUser.CreateUser(dto);
+                var user = _aplicUser.CreateUser(dto);
 
-                return Ok();
+                return Ok(user);
             }
             catch (Exception ex) 
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet("{id}")]
+        public IActionResult DetailUser([FromRoute] Guid id)
+        {
+            try
+            {
+                var user = _aplicUser.DetailUser(id);
+
+                return Ok(user);
+            }
+            catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
