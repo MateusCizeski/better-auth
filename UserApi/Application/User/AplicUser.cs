@@ -32,7 +32,7 @@ namespace Application.Users
             var user = _repUser.SearchUserById(id);
             _mapperUser.UpdateUser(user, dto);
 
-            _repUser.UpdateUser(user);
+           return _repUser.UpdateUser(user);
         }
     }
 }
