@@ -8,7 +8,7 @@ namespace Infrastructure.Repositories
         UserDetailDTO DetailUser(Guid id);
         UserDetailDTO CreateUser(User user);
         UserDetailDTO UpdateUser(User user);
-        Task AuthUser(AuthUserDTO dto);
+        string AuthUser(AuthUserDTO dto);
         User SearchUserById(Guid id);
     }
 }

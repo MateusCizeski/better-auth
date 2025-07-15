@@ -1,5 +1,4 @@
 ﻿using Domain.User;
-using Domain.User.DTOs;
 
 namespace Application.Users
 {

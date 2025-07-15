@@ -43,5 +43,20 @@ namespace UserApi.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        [HttpPut("{id}")]
+        public IActionResult UpdateUser([FromRoute] Guid id, [FromBody] UpdateUserDTO dto)
+        {
+            try
+            {
+                _aplicUser.UpdateUser(id, dto);
+
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }

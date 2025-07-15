@@ -1,15 +1,18 @@
 ﻿using Domain.User.DTOs;
 using Domain.User;
 using Infrastructure.Data;
+using CrossCutting.JWT;
 
 namespace Infrastructure.Repositories
 {
     public class RepUser : IRepUser
     {
         private readonly ApplicationDbContext _context;
-        public RepUser(ApplicationDbContext context)
+        private readonly ITokenService _tokenService;
+        public RepUser(ApplicationDbContext context, ITokenService tokenService)
         {
             _context = context;
+            _tokenService = tokenService;
         }
 
         public UserDetailDTO CreateUser(User user)
@@ -28,9 +31,18 @@ namespace Infrastructure.Repositories
             };
         }
 
-        public Task AuthUser(AuthUserDTO dto)
+        public string AuthUser(AuthUserDTO dto)
         {
-            throw new NotImplementedException();
+            var user = _context.Users.Where(u => u.Email == dto.Email).FirstOrDefault();
+
+            if(user == null || BCrypt.Net.BCrypt.Verify(dto.Password, user.PasswordHash))
+            {
+                throw new Exception("Email/Password incorrect.");
+            }
+
+            var token = _tokenService.GenerateToken(user);
+
+            return token;
         }
 
         public UserDetailDTO DetailUser(Guid id)
