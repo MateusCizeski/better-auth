@@ -7,5 +7,6 @@ namespace Application.Users
         UserDetailDTO CreateUser(CreateUserDTO dto);
         UserDetailDTO DetailUser(Guid id);
         UserDetailDTO UpdateUser(Guid id, UpdateUserDTO dto);
+        string AuthUser(AuthUserDTO dto);
     }
 }

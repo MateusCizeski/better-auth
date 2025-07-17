@@ -1,4 +1,5 @@
 ﻿using Application.Users;
+using Domain.User.DTOs;
 using Microsoft.AspNetCore.Mvc;
 
 namespace UserApi.Controllers
@@ -50,6 +51,21 @@ namespace UserApi.Controllers
             try
             {
                 _aplicUser.UpdateUser(id, dto);
+
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet]
+        public IActionResult AuthUser([FromBody] AuthUserDTO dto)
+        {
+            try
+            {
+                _aplicUser.AuthUser(dto);
 
                 return Ok();
             }

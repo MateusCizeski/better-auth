@@ -34,5 +34,10 @@ namespace Application.Users
 
            return _repUser.UpdateUser(user);
         }
+
+        public string AuthUser(AuthUserDTO dto)
+        {
+            return _repUser.AuthUser(dto);
+        }
     }
 }
