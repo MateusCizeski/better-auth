@@ -1,9 +1,10 @@
-﻿using Domain.User;
+﻿using Base.Infrastructure.AppDbContext;
+using Domain.User;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Data
 {
-    public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext : AppDbContext
     {
         public DbSet<User> Users => Set<User>();
 

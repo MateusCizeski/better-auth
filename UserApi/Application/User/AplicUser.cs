@@ -1,43 +1,14 @@
-﻿using Domain.User.DTOs;
-using Infrastructure.Repositories;
+﻿using Base.Application;
+using Base.Repository;
+using Domain.User;
+using Infrastructure.Data;
 
 namespace Application.Users
 {
-    public class AplicUser : IAplicUser
+    public class AplicUser : ApplicationBase<User>, IAplicUser
     {
-        private readonly IRepUser _repUser;
-        private readonly IMapperUser _mapperUser;
-
-        public AplicUser(RepUser repUser, IMapperUser mapperUser)
+        public AplicUser(IRepositoryBase<User> repository, ApplicationDbContext dbContext) : base(repository, dbContext)
         {
-            _repUser = repUser;
-            _mapperUser = mapperUser;
-        }
-
-        public UserDetailDTO CreateUser(CreateUserDTO dto)
-        {
-            var passwordHash = BCrypt.Net.BCrypt.HashPassword(dto.Password);
-            var user = _mapperUser.NewUser(dto, passwordHash);
-
-            return _repUser.CreateUser(user);
-        }
-
-        public UserDetailDTO DetailUser(Guid id)
-        {
-            return _repUser.DetailUser(id);
-        }
-
-        public UserDetailDTO UpdateUser(Guid id, UpdateUserDTO dto)
-        {
-            var user = _repUser.SearchUserById(id);
-            _mapperUser.UpdateUser(user, dto);
-
-           return _repUser.UpdateUser(user);
-        }
-
-        public string AuthUser(AuthUserDTO dto)
-        {
-            return _repUser.AuthUser(dto);
         }
     }
 }

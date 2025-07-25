@@ -1,12 +1,9 @@
-﻿using Domain.User.DTOs;
+﻿using Base.Application;
+using Domain.User;
 
 namespace Application.Users
 {
-    public interface IAplicUser
+    public interface IAplicUser : IApplicationBase<User>
     {
-        UserDetailDTO CreateUser(CreateUserDTO dto);
-        UserDetailDTO DetailUser(Guid id);
-        UserDetailDTO UpdateUser(Guid id, UpdateUserDTO dto);
-        string AuthUser(AuthUserDTO dto);
     }
 }
