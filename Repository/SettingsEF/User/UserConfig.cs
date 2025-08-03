@@ -13,7 +13,7 @@ namespace Repository.SettingsEF.Users
             builder.HasKey(x => x.Id);
 
             builder.Property(x => x.Id)
-             .HasColumnName("id")
+             .HasColumnName("Id")
              .ValueGeneratedNever()
              .IsRequired();
 

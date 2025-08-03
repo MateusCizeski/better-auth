@@ -1,0 +1,12 @@
+C:\Desenvolvimento\user-api\Common\bin\Debug\net8.0\Common.deps.json
+C:\Desenvolvimento\user-api\Common\bin\Debug\net8.0\Common.dll
+C:\Desenvolvimento\user-api\Common\bin\Debug\net8.0\Common.pdb
+C:\Desenvolvimento\user-api\Common\obj\Debug\net8.0\Common.GeneratedMSBuildEditorConfig.editorconfig
+C:\Desenvolvimento\user-api\Common\obj\Debug\net8.0\Common.AssemblyInfoInputs.cache
+C:\Desenvolvimento\user-api\Common\obj\Debug\net8.0\Common.AssemblyInfo.cs
+C:\Desenvolvimento\user-api\Common\obj\Debug\net8.0\Common.csproj.CoreCompileInputs.cache
+C:\Desenvolvimento\user-api\Common\obj\Debug\net8.0\Common.sourcelink.json
+C:\Desenvolvimento\user-api\Common\obj\Debug\net8.0\Common.dll
+C:\Desenvolvimento\user-api\Common\obj\Debug\net8.0\refint\Common.dll
+C:\Desenvolvimento\user-api\Common\obj\Debug\net8.0\Common.pdb
+C:\Desenvolvimento\user-api\Common\obj\Debug\net8.0\ref\Common.dll

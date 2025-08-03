@@ -1,12 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "qSmPZ9YQV1I=",
+  "dgSpecHash": "f3KNcq95RkY=",
   "success": true,
   "projectFilePath": "C:\\Desenvolvimento\\user-api\\Repository\\Repository.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\mateu\\.nuget\\packages\\apibase.core.common\\1.0.0\\apibase.core.common.1.0.0.nupkg.sha512",
     "C:\\Users\\mateu\\.nuget\\packages\\apibase.core.domain\\1.0.0\\apibase.core.domain.1.0.0.nupkg.sha512",
-    "C:\\Users\\mateu\\.nuget\\packages\\apibase.core.repositories\\1.0.0\\apibase.core.repositories.1.0.0.nupkg.sha512",
+    "C:\\Users\\mateu\\.nuget\\packages\\apibase.core.repositories\\1.0.2\\apibase.core.repositories.1.0.2.nupkg.sha512",
     "C:\\Users\\mateu\\.nuget\\packages\\microsoft.entityframeworkcore\\9.0.7\\microsoft.entityframeworkcore.9.0.7.nupkg.sha512",
     "C:\\Users\\mateu\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\9.0.7\\microsoft.entityframeworkcore.abstractions.9.0.7.nupkg.sha512",
     "C:\\Users\\mateu\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\9.0.7\\microsoft.entityframeworkcore.analyzers.9.0.7.nupkg.sha512",

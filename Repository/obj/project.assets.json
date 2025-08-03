@@ -26,7 +26,7 @@
           "lib/net8.0/ApiBase.Core.Domain.dll": {}
         }
       },
-      "ApiBase.Core.Repositories/1.0.0": {
+      "ApiBase.Core.Repositories/1.0.2": {
         "type": "package",
         "dependencies": {
           "ApiBase.Core.Common": "1.0.0",
@@ -340,14 +340,14 @@
         "lib/net8.0/ApiBase.Core.Domain.dll"
       ]
     },
-    "ApiBase.Core.Repositories/1.0.0": {
-      "sha512": "/+QC6z66NirHXzzhXCOkgjrzvUbsWzCc0/Gy40IULzooTDVrKVVcYNeoBKKmoqrKOixoqR2y2JzfYdvLxPxs0w==",
+    "ApiBase.Core.Repositories/1.0.2": {
+      "sha512": "RPmVhI0Xq1uIKmzK0TD7QH77o5SrEQ1DKDux6AMhaUiHs3gWCTBXKAckwo0jn/H1zx8PljupfL2+RBJ+MOsIDg==",
       "type": "package",
-      "path": "apibase.core.repositories/1.0.0",
+      "path": "apibase.core.repositories/1.0.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "apibase.core.repositories.1.0.0.nupkg.sha512",
+        "apibase.core.repositories.1.0.2.nupkg.sha512",
         "apibase.core.repositories.nuspec",
         "lib/net8.0/ApiBase.Core.Repositories.dll"
       ]
@@ -795,7 +795,7 @@
   },
   "projectFileDependencyGroups": {
     "net8.0": [
-      "ApiBase.Core.Repositories >= 1.0.0",
+      "ApiBase.Core.Repositories >= 1.0.2",
       "Domain >= 1.0.0"
     ]
   },
@@ -859,7 +859,7 @@
         "dependencies": {
           "ApiBase.Core.Repositories": {
             "target": "Package",
-            "version": "[1.0.0, )"
+            "version": "[1.0.2, )"
           }
         },
         "imports": [

@@ -6,7 +6,7 @@ namespace Repository
 {
     public class ContextDataBase : Context
     {
-        public ContextDataBase(DbContextOptions<Context> options) : base(options) { }
+        public ContextDataBase(DbContextOptions<ContextDataBase> options) : base(options) { }
 
         public override void ModelCreating(ModelBuilder modelBuilder)
         {
