@@ -15,20 +15,20 @@
           "Repository.dll": {}
         }
       },
-      "ApiBase.Core.Common/1.0.0": {
+      "ApiBase.Core.Common/1.0.3": {
         "dependencies": {
           "Newtonsoft.Json": "13.0.3"
         },
         "runtime": {
           "lib/net8.0/ApiBase.Core.Common.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
+            "assemblyVersion": "1.0.3.0",
+            "fileVersion": "1.0.3.0"
           }
         }
       },
       "ApiBase.Core.Domain/1.0.0": {
         "dependencies": {
-          "ApiBase.Core.Common": "1.0.0"
+          "ApiBase.Core.Common": "1.0.3"
         },
         "runtime": {
           "lib/net8.0/ApiBase.Core.Domain.dll": {
@@ -39,7 +39,7 @@
       },
       "ApiBase.Core.Repositories/1.0.2": {
         "dependencies": {
-          "ApiBase.Core.Common": "1.0.0",
+          "ApiBase.Core.Common": "1.0.3",
           "ApiBase.Core.Domain": "1.0.0",
           "Microsoft.EntityFrameworkCore": "9.0.7",
           "Microsoft.EntityFrameworkCore.Relational": "9.0.7"
@@ -205,9 +205,21 @@
           }
         }
       },
+      "Common/1.0.0": {
+        "dependencies": {
+          "ApiBase.Core.Common": "1.0.3"
+        },
+        "runtime": {
+          "Common.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
       "Domain/1.0.0": {
         "dependencies": {
-          "ApiBase.Core.Domain": "1.0.0"
+          "ApiBase.Core.Domain": "1.0.0",
+          "Common": "1.0.0"
         },
         "runtime": {
           "Domain.dll": {
@@ -224,12 +236,12 @@
       "serviceable": false,
       "sha512": ""
     },
-    "ApiBase.Core.Common/1.0.0": {
+    "ApiBase.Core.Common/1.0.3": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-6SuKB54BnWjRyJ/uM8e/x8Zdiu/uYZD1LHnZ3VkEKJn6pkoM2P1iPP+/Ep6goN2K1IABIbTDwh97+OsEfiDRKg==",
-      "path": "apibase.core.common/1.0.0",
-      "hashPath": "apibase.core.common.1.0.0.nupkg.sha512"
+      "sha512": "sha512-CxwjTqCkZykYdcZgICvowZWl4GheuxrWys9riGtZiBXVXQifGSSOAoKjz/m6Isi8nHvYwsI/9rjqZP/NBohC5Q==",
+      "path": "apibase.core.common/1.0.3",
+      "hashPath": "apibase.core.common.1.0.3.nupkg.sha512"
     },
     "ApiBase.Core.Domain/1.0.0": {
       "type": "package",
@@ -349,6 +361,11 @@
       "sha512": "sha512-i0uHOKl+qabSYMpY8i676wgi8TI9D3yJIh9s8eog9xhcIqWiA+8khfYkAumCmTkJNMsI7qV527VTeSiQc6tPWA==",
       "path": "system.diagnostics.diagnosticsource/9.0.7",
       "hashPath": "system.diagnostics.diagnosticsource.9.0.7.nupkg.sha512"
+    },
+    "Common/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "Domain/1.0.0": {
       "type": "project",

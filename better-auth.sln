@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository", "Repository\Repository.csproj", "{BC20C21D-47B9-48F4-B500-CDA84D2A2B3D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infra", "Infra\Infra.csproj", "{19CD578E-B1ED-4141-8393-1AAB41B8D4DE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{BC20C21D-47B9-48F4-B500-CDA84D2A2B3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BC20C21D-47B9-48F4-B500-CDA84D2A2B3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BC20C21D-47B9-48F4-B500-CDA84D2A2B3D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19CD578E-B1ED-4141-8393-1AAB41B8D4DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19CD578E-B1ED-4141-8393-1AAB41B8D4DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19CD578E-B1ED-4141-8393-1AAB41B8D4DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19CD578E-B1ED-4141-8393-1AAB41B8D4DE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
