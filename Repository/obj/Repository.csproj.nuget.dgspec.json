@@ -10,14 +10,15 @@
         "projectUniqueName": "C:\\Desenvolvimento\\user-api\\Common\\Common.csproj",
         "projectName": "Common",
         "projectPath": "C:\\Desenvolvimento\\user-api\\Common\\Common.csproj",
-        "packagesPath": "C:\\Users\\mateus.kogl\\.nuget\\packages\\",
+        "packagesPath": "C:\\Users\\mateu\\.nuget\\packages\\",
         "outputPath": "C:\\Desenvolvimento\\user-api\\Common\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\mateus.kogl\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\mateu\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -25,9 +26,10 @@
           "net8.0"
         ],
         "sources": {
+          "C:\\Desenvolvimento\\LocalNugetPackages": {},
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://nuget.useall.com.br/nuget": {},
-          "https://www.nuget.org/api/v2/": {}
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
@@ -45,7 +47,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.300"
+        "SdkAnalysisLevel": "9.0.200"
       },
       "frameworks": {
         "net8.0": {
@@ -53,7 +55,7 @@
           "dependencies": {
             "ApiBase.Core.Common": {
               "target": "Package",
-              "version": "[1.0.3, )"
+              "version": "[1.0.5, )"
             }
           },
           "imports": [
@@ -72,7 +74,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.302/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
@@ -82,14 +84,15 @@
         "projectUniqueName": "C:\\Desenvolvimento\\user-api\\Domain\\Domain.csproj",
         "projectName": "Domain",
         "projectPath": "C:\\Desenvolvimento\\user-api\\Domain\\Domain.csproj",
-        "packagesPath": "C:\\Users\\mateus.kogl\\.nuget\\packages\\",
+        "packagesPath": "C:\\Users\\mateu\\.nuget\\packages\\",
         "outputPath": "C:\\Desenvolvimento\\user-api\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\mateus.kogl\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\mateu\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -97,9 +100,10 @@
           "net8.0"
         ],
         "sources": {
+          "C:\\Desenvolvimento\\LocalNugetPackages": {},
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://nuget.useall.com.br/nuget": {},
-          "https://www.nuget.org/api/v2/": {}
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
@@ -121,7 +125,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.300"
+        "SdkAnalysisLevel": "9.0.200"
       },
       "frameworks": {
         "net8.0": {
@@ -129,7 +133,7 @@
           "dependencies": {
             "ApiBase.Core.Domain": {
               "target": "Package",
-              "version": "[1.0.0, )"
+              "version": "[1.0.2, )"
             }
           },
           "imports": [
@@ -148,7 +152,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.302/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
@@ -158,14 +162,15 @@
         "projectUniqueName": "C:\\Desenvolvimento\\user-api\\Repository\\Repository.csproj",
         "projectName": "Repository",
         "projectPath": "C:\\Desenvolvimento\\user-api\\Repository\\Repository.csproj",
-        "packagesPath": "C:\\Users\\mateus.kogl\\.nuget\\packages\\",
+        "packagesPath": "C:\\Users\\mateu\\.nuget\\packages\\",
         "outputPath": "C:\\Desenvolvimento\\user-api\\Repository\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\mateus.kogl\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\mateu\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -173,9 +178,10 @@
           "net8.0"
         ],
         "sources": {
+          "C:\\Desenvolvimento\\LocalNugetPackages": {},
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://nuget.useall.com.br/nuget": {},
-          "https://www.nuget.org/api/v2/": {}
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
@@ -197,7 +203,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.300"
+        "SdkAnalysisLevel": "9.0.200"
       },
       "frameworks": {
         "net8.0": {
@@ -205,7 +211,7 @@
           "dependencies": {
             "ApiBase.Core.Repositories": {
               "target": "Package",
-              "version": "[1.0.2, )"
+              "version": "[1.0.5, )"
             }
           },
           "imports": [
@@ -224,7 +230,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.302/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

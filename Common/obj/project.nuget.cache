@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "ZSQyBKsC5N0=",
+  "dgSpecHash": "NVP8mOvQWL8=",
   "success": true,
   "projectFilePath": "C:\\Desenvolvimento\\user-api\\Common\\Common.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\mateus.kogl\\.nuget\\packages\\apibase.core.common\\1.0.3\\apibase.core.common.1.0.3.nupkg.sha512",
-    "C:\\Users\\mateus.kogl\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+    "C:\\Users\\mateu\\.nuget\\packages\\apibase.core.common\\1.0.5\\apibase.core.common.1.0.5.nupkg.sha512",
+    "C:\\Users\\mateu\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
   ],
   "logs": []
 }

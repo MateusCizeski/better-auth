@@ -7,7 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="ApiBase.Core.Domain" Version="1.0.0" />
+    <PackageReference Include="ApiBase.Core.Domain" Version="1.0.2" />
+
   </ItemGroup>
 
   <ItemGroup>

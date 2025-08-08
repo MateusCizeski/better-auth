@@ -567,3 +567,22 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+# Compilação / Build
+bin/
+obj/
+*.pdb
+*.mdb
+*.user
+*.suo
+*.cache
+*.db
+
+# Logs
+*.log
+
+# Configurações locais do VS
+.vs/
+
+# Dados temporários do ASP.NET
+GeneratedFiles/

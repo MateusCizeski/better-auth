@@ -2,7 +2,7 @@
   "version": 3,
   "targets": {
     "net8.0": {
-      "ApiBase.Core.Common/1.0.3": {
+      "ApiBase.Core.Common/1.0.5": {
         "type": "package",
         "dependencies": {
           "Newtonsoft.Json": "13.0.3"
@@ -14,10 +14,10 @@
           "lib/net8.0/ApiBase.Core.Common.dll": {}
         }
       },
-      "ApiBase.Core.Domain/1.0.0": {
+      "ApiBase.Core.Domain/1.0.2": {
         "type": "package",
         "dependencies": {
-          "ApiBase.Core.Common": "1.0.0"
+          "ApiBase.Core.Common": "1.0.5"
         },
         "compile": {
           "lib/net8.0/ApiBase.Core.Domain.dll": {}
@@ -43,7 +43,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
-          "ApiBase.Core.Common": "1.0.3"
+          "ApiBase.Core.Common": "1.0.5"
         },
         "compile": {
           "bin/placeholder/Common.dll": {}
@@ -55,26 +55,26 @@
     }
   },
   "libraries": {
-    "ApiBase.Core.Common/1.0.3": {
-      "sha512": "CxwjTqCkZykYdcZgICvowZWl4GheuxrWys9riGtZiBXVXQifGSSOAoKjz/m6Isi8nHvYwsI/9rjqZP/NBohC5Q==",
+    "ApiBase.Core.Common/1.0.5": {
+      "sha512": "rQvSNpnPr6/0/sV7Rmh1cl+0fSPJDIhaksE2uloa6PR6aR+2t5yD9NkTTYc/cN8BjSn8pSUEefTcU2OrQ1/j4A==",
       "type": "package",
-      "path": "apibase.core.common/1.0.3",
+      "path": "apibase.core.common/1.0.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "apibase.core.common.1.0.3.nupkg.sha512",
+        "apibase.core.common.1.0.5.nupkg.sha512",
         "apibase.core.common.nuspec",
         "lib/net8.0/ApiBase.Core.Common.dll"
       ]
     },
-    "ApiBase.Core.Domain/1.0.0": {
-      "sha512": "PQs1c+3Fm0oMtU0v2OXxMXHkWhuLO76D+D3c1dvPecPBgYh/FUVxRmDf87TWFq0Itl25XqTnPDQ0C2WCfVSxbA==",
+    "ApiBase.Core.Domain/1.0.2": {
+      "sha512": "nlFeWzZSSSBRhJykhfDOfwaibHPljQQNwOLIGLvUUrFAys7J1tImP3YibEAF+o2z82zYLslfvTCitZda9nYdiw==",
       "type": "package",
-      "path": "apibase.core.domain/1.0.0",
+      "path": "apibase.core.domain/1.0.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "apibase.core.domain.1.0.0.nupkg.sha512",
+        "apibase.core.domain.1.0.2.nupkg.sha512",
         "apibase.core.domain.nuspec",
         "lib/net8.0/ApiBase.Core.Domain.dll"
       ]
@@ -117,13 +117,14 @@
   },
   "projectFileDependencyGroups": {
     "net8.0": [
-      "ApiBase.Core.Domain >= 1.0.0",
+      "ApiBase.Core.Domain >= 1.0.2",
       "Common >= 1.0.0"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\mateus.kogl\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\mateu\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
@@ -131,14 +132,15 @@
       "projectUniqueName": "C:\\Desenvolvimento\\user-api\\Domain\\Domain.csproj",
       "projectName": "Domain",
       "projectPath": "C:\\Desenvolvimento\\user-api\\Domain\\Domain.csproj",
-      "packagesPath": "C:\\Users\\mateus.kogl\\.nuget\\packages\\",
+      "packagesPath": "C:\\Users\\mateu\\.nuget\\packages\\",
       "outputPath": "C:\\Desenvolvimento\\user-api\\Domain\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\mateus.kogl\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\mateu\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -146,9 +148,10 @@
         "net8.0"
       ],
       "sources": {
+        "C:\\Desenvolvimento\\LocalNugetPackages": {},
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://nuget.useall.com.br/nuget": {},
-        "https://www.nuget.org/api/v2/": {}
+        "C:\\Program Files\\dotnet\\library-packs": {},
+        "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net8.0": {
@@ -170,7 +173,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.300"
+      "SdkAnalysisLevel": "9.0.200"
     },
     "frameworks": {
       "net8.0": {
@@ -178,7 +181,7 @@
         "dependencies": {
           "ApiBase.Core.Domain": {
             "target": "Package",
-            "version": "[1.0.0, )"
+            "version": "[1.0.2, )"
           }
         },
         "imports": [
@@ -197,7 +200,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.302/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
