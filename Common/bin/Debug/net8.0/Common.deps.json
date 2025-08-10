@@ -8,20 +8,20 @@
     ".NETCoreApp,Version=v8.0": {
       "Common/1.0.0": {
         "dependencies": {
-          "ApiBase.Core.Common": "1.0.5"
+          "ApiBase.Core.Common": "1.0.6"
         },
         "runtime": {
           "Common.dll": {}
         }
       },
-      "ApiBase.Core.Common/1.0.5": {
+      "ApiBase.Core.Common/1.0.6": {
         "dependencies": {
           "Newtonsoft.Json": "13.0.3"
         },
         "runtime": {
           "lib/net8.0/ApiBase.Core.Common.dll": {
-            "assemblyVersion": "1.0.5.0",
-            "fileVersion": "1.0.5.0"
+            "assemblyVersion": "1.0.6.0",
+            "fileVersion": "1.0.6.0"
           }
         }
       },
@@ -41,12 +41,12 @@
       "serviceable": false,
       "sha512": ""
     },
-    "ApiBase.Core.Common/1.0.5": {
+    "ApiBase.Core.Common/1.0.6": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-rQvSNpnPr6/0/sV7Rmh1cl+0fSPJDIhaksE2uloa6PR6aR+2t5yD9NkTTYc/cN8BjSn8pSUEefTcU2OrQ1/j4A==",
-      "path": "apibase.core.common/1.0.5",
-      "hashPath": "apibase.core.common.1.0.5.nupkg.sha512"
+      "sha512": "sha512-s7OXDi42FFtrN2Z9MuPdVDOKm5mNpkuNDHs2zhbL7DeUAb4F4MYcHg5YDMWODavKjunyU9vqhQqsQ6tjqrHzyw==",
+      "path": "apibase.core.common/1.0.6",
+      "hashPath": "apibase.core.common.1.0.6.nupkg.sha512"
     },
     "Newtonsoft.Json/13.0.3": {
       "type": "package",

@@ -7,11 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="ApiBase.Core.Repositories" Version="1.0.5" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <PackageReference Include="ApiBase.Core.Repositories" Version="1.0.6" />
     <ProjectReference Include="..\Domain\Domain.csproj" />
   </ItemGroup>
-
 </Project>

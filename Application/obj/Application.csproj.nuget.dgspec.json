@@ -65,7 +65,7 @@
           "dependencies": {
             "ApiBase.Core.Application": {
               "target": "Package",
-              "version": "[1.0.2, )"
+              "version": "[1.0.3, )"
             }
           },
           "imports": [
@@ -139,7 +139,7 @@
           "dependencies": {
             "ApiBase.Core.Common": {
               "target": "Package",
-              "version": "[1.0.5, )"
+              "version": "[1.0.6, )"
             }
           },
           "imports": [
@@ -217,7 +217,7 @@
           "dependencies": {
             "ApiBase.Core.Domain": {
               "target": "Package",
-              "version": "[1.0.2, )"
+              "version": "[1.0.3, )"
             }
           },
           "imports": [
@@ -298,7 +298,7 @@
           "dependencies": {
             "ApiBase.Core.Infra": {
               "target": "Package",
-              "version": "[1.0.2, )"
+              "version": "[1.0.3, )"
             }
           },
           "imports": [

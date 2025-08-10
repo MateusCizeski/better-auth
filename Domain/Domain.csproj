@@ -7,12 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="ApiBase.Core.Domain" Version="1.0.2" />
-
-  </ItemGroup>
-
-  <ItemGroup>
+    <PackageReference Include="ApiBase.Core.Domain" Version="1.0.3" />
     <ProjectReference Include="..\Common\Common.csproj" />
   </ItemGroup>
-
 </Project>

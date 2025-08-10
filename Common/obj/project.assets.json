@@ -2,7 +2,7 @@
   "version": 3,
   "targets": {
     "net8.0": {
-      "ApiBase.Core.Common/1.0.5": {
+      "ApiBase.Core.Common/1.0.6": {
         "type": "package",
         "dependencies": {
           "Newtonsoft.Json": "13.0.3"
@@ -30,14 +30,14 @@
     }
   },
   "libraries": {
-    "ApiBase.Core.Common/1.0.5": {
-      "sha512": "rQvSNpnPr6/0/sV7Rmh1cl+0fSPJDIhaksE2uloa6PR6aR+2t5yD9NkTTYc/cN8BjSn8pSUEefTcU2OrQ1/j4A==",
+    "ApiBase.Core.Common/1.0.6": {
+      "sha512": "s7OXDi42FFtrN2Z9MuPdVDOKm5mNpkuNDHs2zhbL7DeUAb4F4MYcHg5YDMWODavKjunyU9vqhQqsQ6tjqrHzyw==",
       "type": "package",
-      "path": "apibase.core.common/1.0.5",
+      "path": "apibase.core.common/1.0.6",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "apibase.core.common.1.0.5.nupkg.sha512",
+        "apibase.core.common.1.0.6.nupkg.sha512",
         "apibase.core.common.nuspec",
         "lib/net8.0/ApiBase.Core.Common.dll"
       ]
@@ -75,7 +75,7 @@
   },
   "projectFileDependencyGroups": {
     "net8.0": [
-      "ApiBase.Core.Common >= 1.0.5"
+      "ApiBase.Core.Common >= 1.0.6"
     ]
   },
   "packageFolders": {
@@ -134,7 +134,7 @@
         "dependencies": {
           "ApiBase.Core.Common": {
             "target": "Package",
-            "version": "[1.0.5, )"
+            "version": "[1.0.6, )"
           }
         },
         "imports": [
