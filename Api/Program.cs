@@ -5,6 +5,7 @@ using Domain.Users;
 using Microsoft.EntityFrameworkCore;
 using Repository;
 using Repository.Users;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +18,10 @@ builder.Services.AddScoped<IRepositoryUser, RepositoryUser>();
 builder.Services.AddScoped<IApplicationUser, ApplicationUser>();
 
 builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddApplicationPart(typeof(Api.Controllers.ControllerUser).Assembly);
+var assembly = Assembly.Load("ApiBase.Core.Api");
+builder.Services.AddControllers().AddApplicationPart(assembly);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 

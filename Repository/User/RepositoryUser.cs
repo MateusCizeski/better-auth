@@ -1,4 +1,4 @@
-﻿using ApiBase.Core.Repositories.Repositories.Repository;
+﻿using ApiBase.Core.Repositories.Repository;
 using Domain.Users;
 
 namespace Repository.Users
