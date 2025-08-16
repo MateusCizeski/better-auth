@@ -63,9 +63,13 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "ApiBase.Api": {
+              "target": "Package",
+              "version": "[1.0.1, )"
+            },
             "ApiBase.Core": {
               "target": "Package",
-              "version": "[1.0.0, )"
+              "version": "[1.0.2, )"
             }
           },
           "imports": [
@@ -137,9 +141,13 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "ApiBase.Api": {
+              "target": "Package",
+              "version": "[1.0.1, )"
+            },
             "ApiBase.Core": {
               "target": "Package",
-              "version": "[1.0.0, )"
+              "version": "[1.0.2, )"
             }
           },
           "imports": [
@@ -215,9 +223,13 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "ApiBase.Api": {
+              "target": "Package",
+              "version": "[1.0.1, )"
+            },
             "ApiBase.Core": {
               "target": "Package",
-              "version": "[1.0.0, )"
+              "version": "[1.0.2, )"
             }
           },
           "imports": [
@@ -296,9 +308,13 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "ApiBase.Api": {
+              "target": "Package",
+              "version": "[1.0.1, )"
+            },
             "ApiBase.Core": {
               "target": "Package",
-              "version": "[1.0.0, )"
+              "version": "[1.0.2, )"
             }
           },
           "imports": [

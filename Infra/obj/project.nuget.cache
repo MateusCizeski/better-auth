@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "Ys6cIRyPuSk=",
+  "dgSpecHash": "5Ns2qAfmDfw=",
   "success": true,
   "projectFilePath": "C:\\Desenvolvimento\\user-api\\Infra\\Infra.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\mateu\\.nuget\\packages\\apibase.core\\1.0.0\\apibase.core.1.0.0.nupkg.sha512",
+    "C:\\Users\\mateu\\.nuget\\packages\\apibase.api\\1.0.1\\apibase.api.1.0.1.nupkg.sha512",
+    "C:\\Users\\mateu\\.nuget\\packages\\apibase.core\\1.0.2\\apibase.core.1.0.2.nupkg.sha512",
     "C:\\Users\\mateu\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\mateu\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",
     "C:\\Users\\mateu\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\8.0.8\\microsoft.aspnetcore.authentication.jwtbearer.8.0.8.nupkg.sha512",
