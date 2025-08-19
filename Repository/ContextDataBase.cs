@@ -1,4 +1,4 @@
-﻿using ApiBase.Core.Repositories.Contexts;
+﻿using ApiBase.Repository.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Repository.SettingsEF.Users;
 

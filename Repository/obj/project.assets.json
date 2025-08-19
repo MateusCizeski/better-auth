@@ -2,25 +2,23 @@
   "version": 3,
   "targets": {
     "net8.0": {
-      "ApiBase.Api/1.0.1": {
+      "ApiBase.Domain/1.0.0": {
         "type": "package",
-        "dependencies": {
-          "ApiBase.Core": "1.0.2"
-        },
         "compile": {
-          "lib/net8.0/ApiBase.Api.dll": {
+          "lib/net8.0/ApiBase.Domain.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net8.0/ApiBase.Api.dll": {
+          "lib/net8.0/ApiBase.Domain.dll": {
             "related": ".xml"
           }
         }
       },
-      "ApiBase.Core/1.0.2": {
+      "ApiBase.Infra/1.0.0": {
         "type": "package",
         "dependencies": {
+          "ApiBase.Domain": "1.0.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "8.0.8",
           "Microsoft.EntityFrameworkCore": "9.0.8",
           "Microsoft.EntityFrameworkCore.InMemory": "9.0.8",
@@ -34,12 +32,40 @@
           "System.IdentityModel.Tokens.Jwt": "8.13.1"
         },
         "compile": {
-          "lib/net8.0/ApiBase.Core.dll": {
+          "lib/net8.0/ApiBase.Infra.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net8.0/ApiBase.Core.dll": {
+          "lib/net8.0/ApiBase.Infra.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "ApiBase.Repository/1.0.0": {
+        "type": "package",
+        "dependencies": {
+          "ApiBase.Domain": "1.0.0",
+          "ApiBase.Infra": "1.0.0",
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "8.0.8",
+          "Microsoft.EntityFrameworkCore": "9.0.8",
+          "Microsoft.EntityFrameworkCore.InMemory": "9.0.8",
+          "Microsoft.EntityFrameworkCore.Relational": "9.0.8",
+          "Microsoft.EntityFrameworkCore.SqlServer": "9.0.8",
+          "Microsoft.EntityFrameworkCore.Sqlite": "9.0.8",
+          "Microsoft.Extensions.DependencyInjection": "9.0.8",
+          "Newtonsoft.Json": "13.0.3",
+          "Npgsql.EntityFrameworkCore.PostgreSQL": "9.0.4",
+          "Swashbuckle.AspNetCore": "6.6.2",
+          "System.IdentityModel.Tokens.Jwt": "8.13.1"
+        },
+        "compile": {
+          "lib/net8.0/ApiBase.Repository.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/ApiBase.Repository.dll": {
             "related": ".xml"
           }
         }
@@ -1390,8 +1416,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
-          "ApiBase.Api": "1.0.1",
-          "ApiBase.Core": "1.0.2"
+          "ApiBase.Domain": "1.0.0"
         },
         "compile": {
           "bin/placeholder/Domain.dll": {}
@@ -1403,30 +1428,43 @@
     }
   },
   "libraries": {
-    "ApiBase.Api/1.0.1": {
-      "sha512": "3Zuz3VPfRJQKn+xWvn5DHS/E+dAYhSt/SuySA6Gpcn7gBJ3X0ixYIjSWS0v4yezV44Jcnh/zCJNztFrU7WmqKw==",
+    "ApiBase.Domain/1.0.0": {
+      "sha512": "eOLcuxXj2Ey37sPth14f8ZRueVd5afrNLxq3awzJdbEflAPOIs/m3jNQnPov9TD7vk5HMoUkTJj6hTNvTmXbJg==",
       "type": "package",
-      "path": "apibase.api/1.0.1",
+      "path": "apibase.domain/1.0.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "apibase.api.1.0.1.nupkg.sha512",
-        "apibase.api.nuspec",
-        "lib/net8.0/ApiBase.Api.dll",
-        "lib/net8.0/ApiBase.Api.xml"
+        "apibase.domain.1.0.0.nupkg.sha512",
+        "apibase.domain.nuspec",
+        "lib/net8.0/ApiBase.Domain.dll",
+        "lib/net8.0/ApiBase.Domain.xml"
       ]
     },
-    "ApiBase.Core/1.0.2": {
-      "sha512": "aMIHRw8x9cVOTB8yTthzzScjMv6mpm2ApYBcRN1IohbvAYj15Th0Gb0vNzEqszS8nOsmFk5JVk2Ld1SSBxmj1w==",
+    "ApiBase.Infra/1.0.0": {
+      "sha512": "dHVhxn+AVD72xYccNNGlli3nQGfBLLlL2YIO/QZyH53yRMX4dsubPp47rWXN+wP4hxrVZmNPJHr0GAoO8+Lotw==",
       "type": "package",
-      "path": "apibase.core/1.0.2",
+      "path": "apibase.infra/1.0.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "apibase.core.1.0.2.nupkg.sha512",
-        "apibase.core.nuspec",
-        "lib/net8.0/ApiBase.Core.dll",
-        "lib/net8.0/ApiBase.Core.xml"
+        "apibase.infra.1.0.0.nupkg.sha512",
+        "apibase.infra.nuspec",
+        "lib/net8.0/ApiBase.Infra.dll",
+        "lib/net8.0/ApiBase.Infra.xml"
+      ]
+    },
+    "ApiBase.Repository/1.0.0": {
+      "sha512": "Lr6GxA5P9Q5jR4qXFqmyfUDDU+VlA8CT6rBs0MXBTH9VI5P1yFp7iTT7JtkJACEYMJCgBa9f2wBwutjQ1YIlIg==",
+      "type": "package",
+      "path": "apibase.repository/1.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "apibase.repository.1.0.0.nupkg.sha512",
+        "apibase.repository.nuspec",
+        "lib/net8.0/ApiBase.Repository.dll",
+        "lib/net8.0/ApiBase.Repository.xml"
       ]
     },
     "Azure.Core/1.38.0": {
@@ -3597,8 +3635,7 @@
   },
   "projectFileDependencyGroups": {
     "net8.0": [
-      "ApiBase.Api >= 1.0.1",
-      "ApiBase.Core >= 1.0.2",
+      "ApiBase.Repository >= 1.0.0",
       "Domain >= 1.0.0"
     ]
   },
@@ -3660,13 +3697,9 @@
       "net8.0": {
         "targetAlias": "net8.0",
         "dependencies": {
-          "ApiBase.Api": {
+          "ApiBase.Repository": {
             "target": "Package",
-            "version": "[1.0.1, )"
-          },
-          "ApiBase.Core": {
-            "target": "Package",
-            "version": "[1.0.2, )"
+            "version": "[1.0.0, )"
           }
         },
         "imports": [

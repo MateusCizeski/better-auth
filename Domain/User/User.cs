@@ -1,4 +1,4 @@
-﻿using ApiBase.Core.Domain.Entities;
+﻿using ApiBase.Domain.Entities;
 
 namespace Domain.Users
 {

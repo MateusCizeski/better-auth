@@ -1,4 +1,4 @@
-﻿using ApiBase.Core.Domain.Interfaces;
+﻿using ApiBase.Domain.Interfaces;
 
 namespace Domain.Users
 {

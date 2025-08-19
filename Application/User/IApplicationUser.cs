@@ -1,4 +1,4 @@
-﻿using ApiBase.Core.Application.ApplicationGuid;
+﻿using ApiBase.Application.ApplicationGuid;
 using Domain.User.DTOs;
 using Domain.Users;
 

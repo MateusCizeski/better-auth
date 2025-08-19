@@ -1,4 +1,4 @@
-﻿using ApiBase.Core.Domain.View;
+﻿using ApiBase.Domain.View;
 
 namespace Domain.Users
 {

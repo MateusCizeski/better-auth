@@ -1,5 +1,5 @@
-﻿using ApiBase.Core.Application.ApplicationGuid;
-using ApiBase.Core.Domain.Interfaces;
+﻿using ApiBase.Application.ApplicationGuid;
+using ApiBase.Domain.Interfaces;
 using Domain.User.DTOs;
 using Domain.Users;
 

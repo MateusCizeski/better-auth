@@ -1,11 +1,10 @@
-using ApiBase.Core.Domain.Interfaces;
-using ApiBase.Core.Infra.UnitOfWork;
+using ApiBase.Domain.Interfaces;
+using ApiBase.Infra.UnitOfWork;
 using Application.Users;
 using Domain.Users;
 using Microsoft.EntityFrameworkCore;
 using Repository;
 using Repository.Users;
-using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 

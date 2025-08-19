@@ -1,4 +1,4 @@
-﻿using ApiBase.Api.BaseGuid;
+﻿using ApiBase.Controller.BaseGuid;
 using Application.Users;
 using Domain.User.DTOs;
 using Domain.Users;
@@ -8,7 +8,7 @@ namespace Api.Controllers
 {
     [ApiController]
     [Route("api/v1/user")]
-    public class ControllerUser : ControllerGuid<IApplicationUser, UserView>
+    public class ControllerUser : GuidController<IApplicationUser, UserView>
     {
         private readonly IApplicationUser _applicationUser;
         public ControllerUser(IApplicationUser application) : base(application)

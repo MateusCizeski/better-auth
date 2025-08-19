@@ -8,8 +8,7 @@
     ".NETCoreApp,Version=v8.0": {
       "Application/1.0.0": {
         "dependencies": {
-          "ApiBase.Api": "1.0.1",
-          "ApiBase.Core": "1.0.2",
+          "ApiBase.Application": "1.0.0",
           "Domain": "1.0.0",
           "Infra": "1.0.0"
         },
@@ -17,19 +16,29 @@
           "Application.dll": {}
         }
       },
-      "ApiBase.Api/1.0.1": {
+      "ApiBase.Application/1.0.0": {
         "dependencies": {
-          "ApiBase.Core": "1.0.2"
+          "ApiBase.Domain": "1.0.0",
+          "ApiBase.Infra": "1.0.0"
         },
         "runtime": {
-          "lib/net8.0/ApiBase.Api.dll": {
-            "assemblyVersion": "1.0.1.0",
-            "fileVersion": "1.0.1.0"
+          "lib/net8.0/ApiBase.Application.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
           }
         }
       },
-      "ApiBase.Core/1.0.2": {
+      "ApiBase.Domain/1.0.0": {
+        "runtime": {
+          "lib/net8.0/ApiBase.Domain.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "ApiBase.Infra/1.0.0": {
         "dependencies": {
+          "ApiBase.Domain": "1.0.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "8.0.8",
           "Microsoft.EntityFrameworkCore": "9.0.8",
           "Microsoft.EntityFrameworkCore.InMemory": "9.0.8",
@@ -43,9 +52,9 @@
           "System.IdentityModel.Tokens.Jwt": "8.13.1"
         },
         "runtime": {
-          "lib/net8.0/ApiBase.Core.dll": {
-            "assemblyVersion": "1.0.2.0",
-            "fileVersion": "1.0.2.0"
+          "lib/net8.0/ApiBase.Infra.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
           }
         }
       },
@@ -939,8 +948,7 @@
       },
       "Domain/1.0.0": {
         "dependencies": {
-          "ApiBase.Api": "1.0.1",
-          "ApiBase.Core": "1.0.2"
+          "ApiBase.Domain": "1.0.0"
         },
         "runtime": {
           "Domain.dll": {
@@ -951,8 +959,7 @@
       },
       "Infra/1.0.0": {
         "dependencies": {
-          "ApiBase.Api": "1.0.1",
-          "ApiBase.Core": "1.0.2",
+          "ApiBase.Infra": "1.0.0",
           "Domain": "1.0.0"
         },
         "runtime": {
@@ -970,19 +977,26 @@
       "serviceable": false,
       "sha512": ""
     },
-    "ApiBase.Api/1.0.1": {
+    "ApiBase.Application/1.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-3Zuz3VPfRJQKn+xWvn5DHS/E+dAYhSt/SuySA6Gpcn7gBJ3X0ixYIjSWS0v4yezV44Jcnh/zCJNztFrU7WmqKw==",
-      "path": "apibase.api/1.0.1",
-      "hashPath": "apibase.api.1.0.1.nupkg.sha512"
+      "sha512": "sha512-gZ9xcfB1zeTPlgmmhZKm2nthpYedT5Fb1TiGlAb6sJdqOYMCZxFSaX/diUPSZdYwuVtIgxeLJy7OrmoejIKWeg==",
+      "path": "apibase.application/1.0.0",
+      "hashPath": "apibase.application.1.0.0.nupkg.sha512"
     },
-    "ApiBase.Core/1.0.2": {
+    "ApiBase.Domain/1.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-aMIHRw8x9cVOTB8yTthzzScjMv6mpm2ApYBcRN1IohbvAYj15Th0Gb0vNzEqszS8nOsmFk5JVk2Ld1SSBxmj1w==",
-      "path": "apibase.core/1.0.2",
-      "hashPath": "apibase.core.1.0.2.nupkg.sha512"
+      "sha512": "sha512-eOLcuxXj2Ey37sPth14f8ZRueVd5afrNLxq3awzJdbEflAPOIs/m3jNQnPov9TD7vk5HMoUkTJj6hTNvTmXbJg==",
+      "path": "apibase.domain/1.0.0",
+      "hashPath": "apibase.domain.1.0.0.nupkg.sha512"
+    },
+    "ApiBase.Infra/1.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-dHVhxn+AVD72xYccNNGlli3nQGfBLLlL2YIO/QZyH53yRMX4dsubPp47rWXN+wP4hxrVZmNPJHr0GAoO8+Lotw==",
+      "path": "apibase.infra/1.0.0",
+      "hashPath": "apibase.infra.1.0.0.nupkg.sha512"
     },
     "Azure.Core/1.38.0": {
       "type": "package",

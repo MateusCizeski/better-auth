@@ -7,8 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="ApiBase.Api" Version="1.0.1" />
-    <PackageReference Include="ApiBase.Core" Version="1.0.2" />
+    <PackageReference Include="ApiBase.Repository" Version="1.0.0" />
   </ItemGroup>
 
   <ItemGroup>
