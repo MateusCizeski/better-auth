@@ -10,8 +10,4 @@
     <PackageReference Include="ApiBase.Api" Version="1.0.1" />
     <PackageReference Include="ApiBase.Core" Version="1.0.2" />
   </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Common\Common.csproj" />
-  </ItemGroup>
 </Project>

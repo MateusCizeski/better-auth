@@ -9,8 +9,7 @@
       "Domain/1.0.0": {
         "dependencies": {
           "ApiBase.Api": "1.0.1",
-          "ApiBase.Core": "1.0.2",
-          "Common": "1.0.0"
+          "ApiBase.Core": "1.0.2"
         },
         "runtime": {
           "Domain.dll": {}
@@ -935,18 +934,6 @@
             "fileVersion": "6.0.21.52210"
           }
         }
-      },
-      "Common/1.0.0": {
-        "dependencies": {
-          "ApiBase.Api": "1.0.1",
-          "ApiBase.Core": "1.0.2"
-        },
-        "runtime": {
-          "Common.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
-        }
       }
     }
   },
@@ -1466,11 +1453,6 @@
       "sha512": "sha512-IXoJOXIqc39AIe+CIR7koBtRGMiCt/LPM3lI+PELtDIy9XdyeSrwXFdWV9dzJ2Awl0paLWUaknLxFQ5HpHZUog==",
       "path": "system.windows.extensions/6.0.0",
       "hashPath": "system.windows.extensions.6.0.0.nupkg.sha512"
-    },
-    "Common/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
     }
   }
 }

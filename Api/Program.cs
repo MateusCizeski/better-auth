@@ -16,11 +16,9 @@ builder.Services.AddScoped<DbContext>(provider => provider.GetRequiredService<Co
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IRepositoryUser, RepositoryUser>();
 builder.Services.AddScoped<IApplicationUser, ApplicationUser>();
+builder.Services.AddScoped<IMapperUser, MapperUser>();
 
 builder.Services.AddControllers();
-//builder.Services
-//    .AddControllers()
-//    .AddApplicationPart(typeof(ApiBase.Api.BaseGuid.ControllerGuid<,>).Assembly);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 

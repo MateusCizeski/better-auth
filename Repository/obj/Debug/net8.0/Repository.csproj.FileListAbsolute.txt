@@ -1,10 +1,8 @@
 C:\Desenvolvimento\user-api\Repository\bin\Debug\net8.0\Repository.deps.json
 C:\Desenvolvimento\user-api\Repository\bin\Debug\net8.0\Repository.dll
 C:\Desenvolvimento\user-api\Repository\bin\Debug\net8.0\Repository.pdb
-C:\Desenvolvimento\user-api\Repository\bin\Debug\net8.0\Common.dll
 C:\Desenvolvimento\user-api\Repository\bin\Debug\net8.0\Domain.dll
 C:\Desenvolvimento\user-api\Repository\bin\Debug\net8.0\Domain.pdb
-C:\Desenvolvimento\user-api\Repository\bin\Debug\net8.0\Common.pdb
 C:\Desenvolvimento\user-api\Repository\obj\Debug\net8.0\Repository.csproj.AssemblyReference.cache
 C:\Desenvolvimento\user-api\Repository\obj\Debug\net8.0\Repository.GeneratedMSBuildEditorConfig.editorconfig
 C:\Desenvolvimento\user-api\Repository\obj\Debug\net8.0\Repository.AssemblyInfoInputs.cache

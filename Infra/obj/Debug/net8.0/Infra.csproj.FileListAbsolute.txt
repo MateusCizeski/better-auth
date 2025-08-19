@@ -1,9 +1,7 @@
 C:\Desenvolvimento\user-api\Infra\bin\Debug\net8.0\Infra.deps.json
 C:\Desenvolvimento\user-api\Infra\bin\Debug\net8.0\Infra.dll
 C:\Desenvolvimento\user-api\Infra\bin\Debug\net8.0\Infra.pdb
-C:\Desenvolvimento\user-api\Infra\bin\Debug\net8.0\Common.dll
 C:\Desenvolvimento\user-api\Infra\bin\Debug\net8.0\Domain.dll
-C:\Desenvolvimento\user-api\Infra\bin\Debug\net8.0\Common.pdb
 C:\Desenvolvimento\user-api\Infra\bin\Debug\net8.0\Domain.pdb
 C:\Desenvolvimento\user-api\Infra\obj\Debug\net8.0\Infra.csproj.AssemblyReference.cache
 C:\Desenvolvimento\user-api\Infra\obj\Debug\net8.0\Infra.GeneratedMSBuildEditorConfig.editorconfig
