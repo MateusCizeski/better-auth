@@ -1,5 +1,6 @@
 ﻿using Domain.User.DTOs;
 using Domain.Users;
+using Infra.Helper;
 
 namespace Application.Users
 {
@@ -7,11 +8,14 @@ namespace Application.Users
     {
         public User NewUser(NewUserDTO dto)
         {
+            var (hash, salt) = PasswordHelper.HashPassword(dto.Password);
+
             return new User
             {
                 Name = dto.Name,    
                 Email = dto.Email,
-                PasswordHash = dto.PasswordHash,
+                PasswordHash = hash,
+                PasswordSalt = salt,
                 CreatedAt = DateTime.UtcNow,
                 UpdatedAt = DateTime.UtcNow,
                 IsActive = true
@@ -29,6 +33,12 @@ namespace Application.Users
                 UpdatedAt = user.UpdatedAt,
                 IsActive = user.IsActive
             };
+        }
+
+        public void UpdateUser(User user, UserUpdateSelfDto dto)
+        {
+            user.Name = dto.Name;
+            user.Email = dto.Email;
         }
     }
 }

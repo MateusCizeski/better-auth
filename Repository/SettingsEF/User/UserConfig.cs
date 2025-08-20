@@ -29,6 +29,10 @@ namespace Repository.SettingsEF.Users
              .HasColumnName("PasswordHash")
              .IsRequired();
             
+            builder.Property(x => x.PasswordSalt)
+             .HasColumnName("PasswordSalt")
+             .IsRequired();
+            
             builder.Property(x => x.CreatedAt)
              .HasColumnName("CreatedAt")
              .IsRequired();

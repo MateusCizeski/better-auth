@@ -26,5 +26,15 @@ namespace Application.Users
 
             return _mapperUser.ToView(user);
         }
+
+        public UserView UpdateUser(Guid id, UserUpdateSelfDto dto)
+        {
+            var user = _repositoryUser.GetById(id);
+
+            _mapperUser.UpdateUser(user, dto);
+            Commit();
+
+            return _mapperUser.ToView(user);
+        }
     }
 }

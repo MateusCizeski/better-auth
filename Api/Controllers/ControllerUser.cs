@@ -30,5 +30,20 @@ namespace Api.Controllers
                 return RespondError(e.Message);
             }
         }
+
+        [HttpPut("{id}")]
+        public IActionResult UpdateUser([FromRoute] Guid id, [FromBody] UserUpdateSelfDto dto)
+        {
+            try
+            {
+                var user = _applicationUser.UpdateUser(id, dto);
+
+                return RespondSuccess(message: "User created with a success.", content: user);
+            }
+            catch (Exception e)
+            {
+                return RespondError(e.Message);
+            }
+        }
     }
 }

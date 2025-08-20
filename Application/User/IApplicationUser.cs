@@ -7,5 +7,6 @@ namespace Application.Users
     public interface IApplicationUser : IApplicationGuid<UserView>
     {
         UserView NewUser(NewUserDTO dto);
+        UserView UpdateUser(Guid id, UserUpdateSelfDto dto);
     }
 }

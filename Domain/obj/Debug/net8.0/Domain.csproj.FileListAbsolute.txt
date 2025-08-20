@@ -1,12 +1,12 @@
+C:\Desenvolvimento\user-api\Domain\bin\Debug\net8.0\Domain.deps.json
+C:\Desenvolvimento\user-api\Domain\bin\Debug\net8.0\Domain.dll
+C:\Desenvolvimento\user-api\Domain\bin\Debug\net8.0\Domain.pdb
 C:\Desenvolvimento\user-api\Domain\obj\Debug\net8.0\Domain.csproj.AssemblyReference.cache
 C:\Desenvolvimento\user-api\Domain\obj\Debug\net8.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
 C:\Desenvolvimento\user-api\Domain\obj\Debug\net8.0\Domain.AssemblyInfoInputs.cache
 C:\Desenvolvimento\user-api\Domain\obj\Debug\net8.0\Domain.AssemblyInfo.cs
 C:\Desenvolvimento\user-api\Domain\obj\Debug\net8.0\Domain.csproj.CoreCompileInputs.cache
 C:\Desenvolvimento\user-api\Domain\obj\Debug\net8.0\Domain.sourcelink.json
-C:\Desenvolvimento\user-api\Domain\bin\Debug\net8.0\Domain.deps.json
-C:\Desenvolvimento\user-api\Domain\bin\Debug\net8.0\Domain.dll
-C:\Desenvolvimento\user-api\Domain\bin\Debug\net8.0\Domain.pdb
 C:\Desenvolvimento\user-api\Domain\obj\Debug\net8.0\Domain.dll
 C:\Desenvolvimento\user-api\Domain\obj\Debug\net8.0\refint\Domain.dll
 C:\Desenvolvimento\user-api\Domain\obj\Debug\net8.0\Domain.pdb
