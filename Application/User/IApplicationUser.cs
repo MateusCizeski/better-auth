@@ -8,5 +8,6 @@ namespace Application.Users
     {
         UserView NewUser(NewUserDTO dto);
         UserView UpdateUser(Guid id, UserUpdateSelfDto dto);
+        LoginResultDTO Login(LoginDTO dto);
     }
 }

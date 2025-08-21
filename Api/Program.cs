@@ -1,6 +1,7 @@
 using ApiBase.Domain.Interfaces;
 using ApiBase.Infra.UnitOfWork;
 using Application.Users;
+using Domain.Jwt;
 using Domain.Users;
 using Microsoft.EntityFrameworkCore;
 using Repository;
@@ -10,6 +11,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<ContextDataBase>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.Configure<JwtSettings>(
+    builder.Configuration.GetSection("JwtSettings"));
 
 builder.Services.AddScoped<DbContext>(provider => provider.GetRequiredService<ContextDataBase>());
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();

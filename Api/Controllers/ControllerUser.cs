@@ -25,7 +25,7 @@ namespace Api.Controllers
 
                 return RespondSuccess(message: "User created with a success.", content: user);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return RespondError(e.Message);
             }
@@ -44,6 +44,22 @@ namespace Api.Controllers
             {
                 return RespondError(e.Message);
             }
+        }
+
+        [HttpPut]
+        public IActionResult Login([FromBody] LoginDTO dto)
+        {
+            try
+            {
+                var token = _applicationUser.Login(dto);
+
+                return RespondSuccess(message: "\r\nuser successfully authenticated.", content: token);
+            }
+            catch (Exception e)
+            {
+                return RespondError(e.Message);
+            }
+
         }
     }
 }
