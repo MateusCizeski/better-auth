@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "fVHbZW1FJ+4=",
+  "dgSpecHash": "q7Ekqk5cRBA=",
   "success": true,
-  "projectFilePath": "C:\\Desenvolvimento\\user-api\\Domain\\Domain.csproj",
+  "projectFilePath": "/home/mateus/user-api/Domain/Domain.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\mateu\\.nuget\\packages\\apibase.domain\\1.0.0\\apibase.domain.1.0.0.nupkg.sha512"
+    "/home/mateus/.nuget/packages/apibase.domain/1.0.0/apibase.domain.1.0.0.nupkg.sha512"
   ],
   "logs": []
 }
