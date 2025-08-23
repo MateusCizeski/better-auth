@@ -70,6 +70,7 @@ appsettings.json
 **/bin/
 **/obj/
 **/.vs/
+.vs/
 
 *.dbmdl
 *.vsp

@@ -4,6 +4,7 @@ using Application.Users;
 using Domain.Jwt;
 using Domain.Users;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 using Repository;
 using Repository.Users;
 
@@ -25,7 +26,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("v1", new OpenApiInfo 
+    c.SwaggerDoc("v1", new OpenApiInfo
     { 
         Title = "User API", 
         Version = "v1" 
