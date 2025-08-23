@@ -71,6 +71,20 @@ appsettings.json
 **/obj/
 **/.vs/
 .vs/
+.vs/better-auth
+.vs/ProjectEvaluation
+.Application/obj
+.Application/bin
+.Domain/obj
+.Domain/bin
+.Infra/obj
+.Infra/bin
+.Repositry/obj
+.Repositry/bin
+bin/
+obj/
+**/bin/
+**/obj/
 
 *.dbmdl
 *.vsp
