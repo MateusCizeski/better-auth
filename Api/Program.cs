@@ -24,31 +24,12 @@ builder.Services.AddScoped<IMapperUser, MapperUser>();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(c =>
-{
-    c.SwaggerDoc("v1", new OpenApiInfo
-    { 
-        Title = "User API", 
-        Version = "v1" 
-    });
-});
+builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-app.UseSwagger(c =>
-{
-    c.RouteTemplate = "api/users/{documentName}/swagger.json";
-});
-
-app.UseSwaggerUI(c =>
-{
-    c.SwaggerEndpoint("/api/users/v1/swagger.json", "User API v1");
-
-    app.UseSwaggerUI(c => 
-    {
-        c.RoutePrefix = "api/users/swagger";
-    });
-});
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
 app.UseAuthorization();
