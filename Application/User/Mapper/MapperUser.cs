@@ -12,13 +12,15 @@ namespace Application.Users
 
             return new User
             {
-                Name = dto.Name,    
+                Name = dto.Name,
+                UserName = dto.UserName,
                 Email = dto.Email,
                 PasswordHash = hash,
                 PasswordSalt = salt,
                 CreatedAt = DateTime.UtcNow,
                 UpdatedAt = DateTime.UtcNow,
-                IsActive = true
+                IsActive = true,
+                EmailConfirmed = false
             };
         }
 
@@ -28,6 +30,7 @@ namespace Application.Users
             {
                 Id = user.Id,
                 Name = user.Name,
+                UserName = user.UserName,
                 Email = user.Email,
                 CreatedAt = user.CreatedAt,
                 UpdatedAt = user.UpdatedAt,
