@@ -53,7 +53,7 @@ namespace Api.Controllers
             {
                 var token = _applicationUser.Login(dto);
 
-                return RespondSuccess(message: "\r\nuser successfully authenticated.", content: token);
+                return RespondSuccess(message: "User successfully authenticated.", content: token);
             }
             catch (Exception e)
             {

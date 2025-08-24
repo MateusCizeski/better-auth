@@ -1,5 +1,6 @@
 ﻿using ApiBase.Application.ApplicationGuid;
 using ApiBase.Domain.Interfaces;
+using ApiBase.Infra.Extensions;
 using Domain.Jwt;
 using Domain.User.DTOs;
 using Domain.Users;
@@ -48,6 +49,16 @@ namespace Application.Users
 
         public UserView NewUser(NewUserDTO dto)
         {
+            if(_repositoryUser.Get().Any(u => u.Email == dto.Email))
+            {
+                throw new InvalidOperationException("Email is already registered.");
+            }
+
+            if (_repositoryUser.Get().Any(u => u.UserName == dto.UserName))
+            {
+                throw new InvalidOperationException("Username is already taken.");
+            }
+
             var user = _mapperUser.NewUser(dto);
 
             _repositoryUser.Insert(user);
@@ -58,7 +69,14 @@ namespace Application.Users
 
         public UserView UpdateUser(Guid id, UserUpdateSelfDto dto)
         {
-            var user = _repositoryUser.GetById(id);
+            var user = _repositoryUser.GetById(id).uExceptionSeNull("User not found.");
+
+            if (!string.Equals(user.UserName, dto.Username, StringComparison.OrdinalIgnoreCase))
+            {
+                bool exists = _repositoryUser.Get().Any(u => u.UserName == dto.Username && u.Id != id);
+
+                if (exists) throw new InvalidOperationException("Username is already taken.");
+            }
 
             _mapperUser.UpdateUser(user, dto);
             Commit();

@@ -38,7 +38,7 @@ namespace Application.Users
         public void UpdateUser(User user, UserUpdateSelfDto dto)
         {
             user.Name = dto.Name;
-            user.Email = dto.Email;
+            user.UserName = dto.Username;
         }
     }
 }

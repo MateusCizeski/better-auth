@@ -19,10 +19,12 @@ namespace Repository.SettingsEF.Users
 
             builder.Property(x => x.Name)
              .HasColumnName("Name")
+             .HasMaxLength(100)
              .IsRequired();
             
             builder.Property(x => x.Email)
              .HasColumnName("Email")
+             .HasMaxLength(100)
              .IsRequired();
             
             builder.Property(x => x.PasswordHash)
@@ -39,6 +41,26 @@ namespace Repository.SettingsEF.Users
             
             builder.Property(x => x.UpdatedAt)
              .HasColumnName("UpdatedAt")
+             .IsRequired();
+
+            builder.Property(x => x.UserName)
+                .HasColumnName("Username")
+                .HasMaxLength(100)
+                .IsRequired();
+
+            builder.Property(x => x.LastLoginAt)
+             .HasColumnName("LastLoginAt")
+             .IsRequired();
+
+            builder.Property(x => x.FailedLoginAttempts)
+             .HasColumnName("FailedLoginAttempts")
+             .IsRequired();
+
+            builder.Property(x => x.LockoutEnd)
+             .HasColumnName("LockoutEnd");
+
+            builder.Property(x => x.EmailConfirmed)
+             .HasColumnName("EmailConfirmed")
              .IsRequired();
         }
     }
