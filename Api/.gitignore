@@ -602,3 +602,10 @@ obj/
 
 # Dados temporários do ASP.NET
 GeneratedFiles/
+
+# Pastas do Visual Studio
+.vs/
+
+# Pastas de build
+**/bin/
+**/obj/
