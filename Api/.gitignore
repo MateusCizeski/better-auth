@@ -63,3 +63,7 @@ $RECYCLE.BIN/
 
 # Visual Studio
 .vs/
+
+# Ignore todos os appsettings, exceto o principal
+appsettings.json
+appsettings*.json
