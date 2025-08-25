@@ -67,3 +67,4 @@ $RECYCLE.BIN/
 # Ignore todos os appsettings, exceto o principal
 appsettings.json
 appsettings*.json
+**/appsettings.*.json
