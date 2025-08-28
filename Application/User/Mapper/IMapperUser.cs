@@ -1,4 +1,5 @@
-﻿using Domain.User.DTOs;
+﻿using Domain.RefreshTokens;
+using Domain.User.DTOs;
 using Domain.Users;
 
 namespace Application.Users
@@ -8,5 +9,6 @@ namespace Application.Users
         User NewUser(NewUserDTO dto);
         void UpdateUser(User user, UserUpdateSelfDto dto);
         UserView ToView(User user);
+        RefreshToken NewRefreshToken(User user, string ipAddress);
     }
 }

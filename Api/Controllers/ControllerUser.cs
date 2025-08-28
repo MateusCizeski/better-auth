@@ -46,12 +46,13 @@ namespace Api.Controllers
             }
         }
 
-        [HttpPut]
+        [HttpPut"login"]
         public IActionResult Login([FromBody] LoginDTO dto)
         {
             try
             {
-                var token = _applicationUser.Login(dto);
+                var ipAddress = HttpContext.Connection.RemoteIpAddress?.ToString();
+                var token = _applicationUser.Login(dto, ipAddress);
 
                 return RespondSuccess(message: "User successfully authenticated.", content: token);
             }
@@ -59,7 +60,6 @@ namespace Api.Controllers
             {
                 return RespondError(e.Message);
             }
-
         }
     }
 }
