@@ -58,7 +58,14 @@ namespace Application.Users
 
         public void Logout(string refreshToken, string ipAddress)
         {
-            throw new NotImplementedException();
+            var token = _repRefreshToken.Get().FirstOrDefault(p => p.Token == refreshToken);
+
+            if (token == null) return;
+
+            token.Revoked = DateTime.UtcNow;
+            token.RevokedByIp = ipAddress;
+
+            Commit();
         }
 
         public UserView NewUser(NewUserDTO dto)

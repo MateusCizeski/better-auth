@@ -1,5 +1,6 @@
 ﻿using ApiBase.Controller.BaseGuid;
 using Application.Users;
+using Domain.RefreshTokens;
 using Domain.User.DTOs;
 using Domain.Users;
 using Microsoft.AspNetCore.Mvc;
@@ -46,7 +47,7 @@ namespace Api.Controllers
             }
         }
 
-        [HttpPut"login"]
+        [HttpPut("login")]
         public IActionResult Login([FromBody] LoginDTO dto)
         {
             try
@@ -55,6 +56,38 @@ namespace Api.Controllers
                 var token = _applicationUser.Login(dto, ipAddress);
 
                 return RespondSuccess(message: "User successfully authenticated.", content: token);
+            }
+            catch (Exception e)
+            {
+                return RespondError(e.Message);
+            }
+        }
+
+        [HttpPost("refresh")]
+        public IActionResult Refresh([FromBody] RefreshRequestDTO dto)
+        {
+            try
+            {
+                var ipAddress = HttpContext.Connection.RemoteIpAddress?.ToString();
+                var token = _applicationUser.Refresh(dto.RefreshToken, ipAddress);
+
+                return RespondSuccess("Token refreshed.", token);
+            }
+            catch (Exception e)
+            {
+                return RespondError(e.Message);
+            }
+        }
+
+        [HttpPost("logout")]
+        public IActionResult Logout([FromBody] RefreshRequestDTO dto)
+        {
+            try
+            {
+                var ipAddress = HttpContext.Connection.RemoteIpAddress?.ToString();
+                _applicationUser.Logout(dto.RefreshToken, ipAddress);
+
+                return RespondSuccess("User logged out successfully.");
             }
             catch (Exception e)
             {
