@@ -53,9 +53,21 @@ namespace Api.Controllers
             try
             {
                 var ipAddress = HttpContext.Connection.RemoteIpAddress?.ToString();
-                var token = _applicationUser.Login(dto, ipAddress);
+                var result = _applicationUser.Login(dto, ipAddress);
 
-                return RespondSuccess(message: "User successfully authenticated.", content: token);
+                Response.Cookies.Append("refreshToken", result.RefreshToken, new CookieOptions
+                {
+                    HttpOnly = true,
+                    Secure = true,
+                   SameSite = SameSiteMode.Strict,
+                   Expires = result.ExpiresAt
+                });
+
+                return RespondSuccess("User successfully authenticated.", new
+                {
+                    Token = result.Token,
+                    ExpiresAt = result.ExpiresAt
+                });
             }
             catch (Exception e)
             {
