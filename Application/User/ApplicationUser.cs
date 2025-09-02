@@ -102,6 +102,7 @@ namespace Application.Users
 
             refresh.Revoked = DateTime.UtcNow;
             refresh.RevokedByIp = ipAddress;
+            refresh.ReplacedByToken = token;
 
            var newRefresh = _mapperUser.NewRefreshToken(user, ipAddress);
 
