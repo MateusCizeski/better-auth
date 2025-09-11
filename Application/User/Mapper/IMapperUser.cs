@@ -9,6 +9,6 @@ namespace Application.Users
         User NewUser(NewUserDTO dto);
         void UpdateUser(User user, UserUpdateSelfDto dto);
         UserView ToView(User user);
-        RefreshToken NewRefreshToken(User user, string ipAddress);
+        RefreshToken NewRefreshToken(User user, string ipAddress, string deviceId, string userAgent);
     }
 }

@@ -28,7 +28,7 @@ namespace Application.Users
             _repRefreshToken = repRefreshToken;
         }
 
-        public LoginResultDTO Login(LoginDTO dto, string ipAddress)
+        public LoginResultDTO Login(LoginDTO dto, string ipAddress, string deviceId, string userAgent)
         {
             var user = _repositoryUser.Get().Where(p => p.Email == dto.Email).FirstOrDefault();
 
@@ -43,7 +43,7 @@ namespace Application.Users
             }
 
             var token = JwtTokenHelper.GenerateToken(user.Id, user.Email, user.Name, _jwtSettings.SecretKey, _jwtSettings.Issuer, _jwtSettings.Audience, 24);
-            var refreshToken = _mapperUser.NewRefreshToken(user, ipAddress);
+            var refreshToken = _mapperUser.NewRefreshToken(user, ipAddress, deviceId, userAgent);
 
             _repRefreshToken.Insert(refreshToken);
             Commit();
@@ -88,7 +88,7 @@ namespace Application.Users
             return _mapperUser.ToView(user);
         }
 
-        public LoginResultDTO Refresh(string token, string ipAddress)
+        public LoginResultDTO Refresh(string token, string ipAddress, string deviceId, string userAgent)
         {
             var refresh = _repRefreshToken.Get().FirstOrDefault(r => r.Token == token);
 
@@ -104,7 +104,7 @@ namespace Application.Users
             refresh.RevokedByIp = ipAddress;
             refresh.ReplacedByToken = token;
 
-           var newRefresh = _mapperUser.NewRefreshToken(user, ipAddress);
+           var newRefresh = _mapperUser.NewRefreshToken(user, ipAddress, userAgent, deviceId);
 
             _repRefreshToken.Insert(newRefresh);
             Commit();
@@ -132,6 +132,33 @@ namespace Application.Users
             Commit();
 
             return _mapperUser.ToView(user);
+        }
+
+        public IEnumerable<SessionViewDTO> GetSessions(Guid userId)
+        {
+            return _repRefreshToken.Get()
+                .Where(p => p.UserId == userId)
+                .Select(p => new SessionViewDTO
+                {
+                    DeviceId = p.DeviceId,
+                    UserAgent = p.UserAgent,
+                    Created = p.Created,
+                    Revoked = p.Revoked,
+                    Expires = p.Expires,
+                    IpAddress = p.CreatedByIp
+                }).ToList();
+        }
+
+        public void RevokeSession(Guid userId, string deviceId)
+        {
+            var session = _repRefreshToken.Get().FirstOrDefault(p => p.Id == userId && 
+                                                                     p.DeviceId == deviceId);
+
+            if (session == null) throw new InvalidOperationException("Session not found.");
+
+            session.Revoked = DateTime.UtcNow;
+
+            Commit();
         }
     }
 }

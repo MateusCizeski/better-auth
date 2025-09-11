@@ -13,6 +13,9 @@ namespace Domain.RefreshTokens
         public string RevokedByIp { get; set; }
         public string ReplacedByToken { get; set; }
 
+        public string DeviceId { get; set; }
+        public string UserAgent { get; set; }
+
         public Domain.Users.User User { get; set; }
 
         public bool IsExpired => DateTime.UtcNow >= Expires;

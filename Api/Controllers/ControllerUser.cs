@@ -53,14 +53,17 @@ namespace Api.Controllers
             try
             {
                 var ipAddress = HttpContext.Connection.RemoteIpAddress?.ToString();
-                var result = _applicationUser.Login(dto, ipAddress);
+                var userAgent = Request.Headers["User-Agent"].ToString();
+                var deviceId = Request.Headers["X-Device-Id"].ToString();
+
+                var result = _applicationUser.Login(dto, ipAddress, deviceId, userAgent);
 
                 Response.Cookies.Append("refreshToken", result.RefreshToken, new CookieOptions
                 {
                     HttpOnly = true,
                     Secure = true,
-                   SameSite = SameSiteMode.Strict,
-                   Expires = result.ExpiresAt
+                    SameSite = SameSiteMode.Strict,
+                    Expires = result.ExpiresAt
                 });
 
                 return RespondSuccess("User successfully authenticated.", new
@@ -81,9 +84,25 @@ namespace Api.Controllers
             try
             {
                 var ipAddress = HttpContext.Connection.RemoteIpAddress?.ToString();
-                var token = _applicationUser.Refresh(dto.RefreshToken, ipAddress);
+                var refreshToken = Request.Cookies["refreshToken"] ?? dto.RefreshToken;
+                var userAgent = Request.Headers["User-Agent"].ToString();
+                var deviceId = Request.Headers["X-Device-Id"].ToString();
 
-                return RespondSuccess("Token refreshed.", token);
+                var result = _applicationUser.Refresh(refreshToken, ipAddress, userAgent, deviceId);
+
+                Response.Cookies.Append("refreshToken", result.RefreshToken, new CookieOptions
+                {
+                    HttpOnly = true,
+                    Secure = true,
+                    SameSite = SameSiteMode.Strict,
+                    Expires = result.ExpiresAt
+                });
+
+                return RespondSuccess("Token refreshed.", new
+                {
+                    Token = result.Token,
+                    ExpiresAt = result.ExpiresAt
+                });
             }
             catch (Exception e)
             {
@@ -99,9 +118,43 @@ namespace Api.Controllers
                 var ipAddress = HttpContext.Connection.RemoteIpAddress?.ToString();
                 _applicationUser.Logout(dto.RefreshToken, ipAddress);
 
+                Response.Cookies.Delete("refreshToken");
+
                 return RespondSuccess("User logged out successfully.");
             }
             catch (Exception e)
+            {
+                return RespondError(e.Message);
+            }
+        }
+
+        [HttpGet("sessions")]
+        public IActionResult GetSessions()
+        {
+            try
+            {
+                var userId = User.Claims.First(c => c.Type == "id").Value;
+                var sessions = _applicationUser.GetSessions(Guid.Parse(userId));
+
+                return RespondSuccess("Active sessions.", sessions);
+            }
+            catch (Exception e)
+            {
+                return RespondError(e.Message);
+            }
+        }
+
+        [HttpDelete("sessions/{deviceId}")]
+        public IActionResult RevokeSession([FromRoute] string deviceId)
+        {
+            try
+            {
+                var userId = User.Claims.First(c => c.Type == "id").Value;
+                _applicationUser.RevokeSession(Guid.Parse(userId), deviceId);
+
+                return RespondSuccess("Session revoked.");
+            }
+            catch(Exception e)
             {
                 return RespondError(e.Message);
             }

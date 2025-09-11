@@ -7,7 +7,7 @@ namespace Application.Users
 {
     public class MapperUser : IMapperUser
     {
-        public RefreshToken NewRefreshToken(User user, string ipAddress)
+        public RefreshToken NewRefreshToken(User user, string ipAddress, string deviceId, string userAgent)
         {
             return new RefreshToken
             {
@@ -15,7 +15,9 @@ namespace Application.Users
                 UserId = user.Id,
                 Expires = DateTime.UtcNow.AddDays(31),
                 Created = DateTime.UtcNow,
-                CreatedByIp = ipAddress
+                CreatedByIp = ipAddress,
+                DeviceId = deviceId,
+                UserAgent = userAgent
             };
         }
 
