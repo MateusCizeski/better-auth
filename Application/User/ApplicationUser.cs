@@ -151,7 +151,7 @@ namespace Application.Users
 
         public void RevokeSession(Guid userId, string deviceId)
         {
-            var session = _repRefreshToken.Get().FirstOrDefault(p => p.Id == userId && 
+            var session = _repRefreshToken.Get().FirstOrDefault(p => p.UserId == userId && 
                                                                      p.DeviceId == deviceId);
 
             if (session == null) throw new InvalidOperationException("Session not found.");
