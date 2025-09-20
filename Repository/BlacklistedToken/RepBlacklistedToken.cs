@@ -4,8 +4,8 @@ using Domain.BlacklistedTokens;
 
 namespace Repository.BlacklistedTokens
 {
-    public class RepBlacklistedToken : RepositoryBase<BlacklistedToken>
+    public class RepBlacklistedToken : RepositoryBase<BlacklistedToken>, IRepBlacklistedToken
     {
-        public RepBlacklistedToken(Context context) : base(context) { }
+        public RepBlacklistedToken(ContextDataBase context) : base(context) { }
     }
 }

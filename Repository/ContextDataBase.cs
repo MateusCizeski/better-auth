@@ -1,5 +1,7 @@
 ﻿using ApiBase.Repository.Contexts;
 using Microsoft.EntityFrameworkCore;
+using Repository.SettingsEF.BlacklistedTokens;
+using Repository.SettingsEF.RefreshTokens;
 using Repository.SettingsEF.Users;
 
 namespace Repository
@@ -11,6 +13,8 @@ namespace Repository
         public override void ModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new UserConfig());
+            modelBuilder.ApplyConfiguration(new RefreshTokenConfig());
+            modelBuilder.ApplyConfiguration(new BlacklistedTokenConfig());
         }
     }
 }

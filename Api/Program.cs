@@ -1,11 +1,14 @@
 using ApiBase.Domain.Interfaces;
 using ApiBase.Infra.UnitOfWork;
 using Application.Users;
+using Domain.BlacklistedTokens;
 using Domain.Jwt;
+using Domain.RefreshTokens;
 using Domain.Users;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.OpenApi.Models;
 using Repository;
+using Repository.BlacklistedTokens;
+using Repository.RefreshTokens;
 using Repository.Users;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,6 +24,8 @@ builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IRepositoryUser, RepositoryUser>();
 builder.Services.AddScoped<IApplicationUser, ApplicationUser>();
 builder.Services.AddScoped<IMapperUser, MapperUser>();
+builder.Services.AddScoped<IRepRefreshToken, RepRefreshToken>();
+builder.Services.AddScoped<IRepBlacklistedToken, RepBlacklistedToken>();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
