@@ -1,11 +1,13 @@
 ﻿using ApiBase.Application.ApplicationGuid;
 using ApiBase.Domain.Interfaces;
 using ApiBase.Infra.Extensions;
+using Domain.BlacklistedTokens;
 using Domain.Jwt;
 using Domain.RefreshTokens;
 using Domain.User.DTOs;
 using Domain.Users;
 using Infra.Helper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
 
 namespace Application.Users
@@ -16,16 +18,19 @@ namespace Application.Users
         private readonly JwtSettings _jwtSettings;
         private readonly IRepositoryUser _repositoryUser;
         private readonly IRepRefreshToken _repRefreshToken;
+        private readonly IRepBlacklistedToken _repBlacklistedToken;
         public ApplicationUser(IUnitOfWork unitOfWork, 
                                IRepositoryUser repository, 
                                IMapperUser mapperUser,
                                IRepRefreshToken repRefreshToken,
-                               IOptions<JwtSettings> jwtOptions) : base(unitOfWork, repository)
+                               IOptions<JwtSettings> jwtOptions,
+                               IRepBlacklistedToken repBlacklistedToken) : base(unitOfWork, repository)
         {
             _repositoryUser = repository;
             _mapperUser = mapperUser;
             _jwtSettings = jwtOptions.Value;
             _repRefreshToken = repRefreshToken;
+            _repBlacklistedToken = repBlacklistedToken;
         }
 
         public LoginResultDTO Login(LoginDTO dto, string ipAddress, string deviceId, string userAgent)
@@ -64,6 +69,15 @@ namespace Application.Users
 
             token.Revoked = DateTime.UtcNow;
             token.RevokedByIp = ipAddress;
+
+            var blacklisted = new BlacklistedToken
+            {
+                Token = HttpContext.Request.Headers["Authorization"].ToString().Replace("Bearer ", ""),
+                UserId = token.UserId,
+                RevokedAt = DateTime.UtcNow
+            };
+
+            _repBlacklistedToken.Insert(blacklisted);
 
             Commit();
         }

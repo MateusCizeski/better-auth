@@ -5,6 +5,7 @@ using Domain.BlacklistedTokens;
 using Domain.Jwt;
 using Domain.RefreshTokens;
 using Domain.Users;
+using Infra.Middlewares;
 using Microsoft.EntityFrameworkCore;
 using Repository;
 using Repository.BlacklistedTokens;
@@ -35,7 +36,7 @@ var app = builder.Build();
 
 app.UseSwagger();
 app.UseSwaggerUI();
-
+app.UseMiddleware<JwtBlacklistMiddleware>();
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
