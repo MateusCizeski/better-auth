@@ -116,7 +116,11 @@ namespace Api.Controllers
             try
             {
                 var ipAddress = HttpContext.Connection.RemoteIpAddress?.ToString();
-                _applicationUser.Logout(dto.RefreshToken, ipAddress);
+
+                var authHeader = HttpContext.Request.Headers["Authorization"].ToString();
+                var accessToken = authHeader.Replace("Bearer ", "");
+
+                _applicationUser.Logout(dto.RefreshToken, ipAddress, accessToken);
 
                 Response.Cookies.Delete("refreshToken");
 

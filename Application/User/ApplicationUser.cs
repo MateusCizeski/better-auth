@@ -1,6 +1,7 @@
 ﻿using ApiBase.Application.ApplicationGuid;
 using ApiBase.Domain.Interfaces;
 using ApiBase.Infra.Extensions;
+using Azure.Core;
 using Domain.BlacklistedTokens;
 using Domain.Jwt;
 using Domain.RefreshTokens;
@@ -61,7 +62,7 @@ namespace Application.Users
             };
         }
 
-        public void Logout(string refreshToken, string ipAddress)
+        public void Logout(string refreshToken, string ipAddress, string accessToken)
         {
             var token = _repRefreshToken.Get().FirstOrDefault(p => p.Token == refreshToken);
 
@@ -72,7 +73,7 @@ namespace Application.Users
 
             var blacklisted = new BlacklistedToken
             {
-                Token = HttpContext.Request.Headers["Authorization"].ToString().Replace("Bearer ", ""),
+                Token = accessToken,
                 UserId = token.UserId,
                 RevokedAt = DateTime.UtcNow
             };
