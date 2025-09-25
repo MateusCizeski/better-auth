@@ -1,8 +1,8 @@
-﻿using ApiBase.Domain.View;
+﻿using ApiBase.Domain.Entities;
 
-namespace Domain.RefreshTokens
+namespace Domain
 {
-    public class RefreshTokenView : IdGuidView
+    public class RefreshToken : EntityGuid
     {
         public Guid UserId { get; set; }
         public string Token { get; set; }
@@ -13,7 +13,10 @@ namespace Domain.RefreshTokens
         public string RevokedByIp { get; set; }
         public string ReplacedByToken { get; set; }
 
-        public Domain.Users.UserView User { get; set; }
+        public string DeviceId { get; set; }
+        public string UserAgent { get; set; }
+
+        public User User { get; set; }
 
         public bool IsExpired => DateTime.UtcNow >= Expires;
         public bool IsActive => Revoked == null && !IsExpired;

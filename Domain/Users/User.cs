@@ -1,6 +1,6 @@
 ﻿using ApiBase.Domain.Entities;
 
-namespace Domain.Users
+namespace Domain
 {
     public class User : EntityGuid
     {
