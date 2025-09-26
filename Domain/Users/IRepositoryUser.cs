@@ -1,6 +1,6 @@
 ﻿using ApiBase.Domain.Interfaces;
 
-namespace Domain.Users
+namespace Domain
 {
     public interface IRepositoryUser : IRepositoryBase<User>
     {

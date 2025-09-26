@@ -1,4 +1,4 @@
-﻿namespace Domain.Jwt
+﻿namespace Domain
 {
     public class JwtSettings
     {

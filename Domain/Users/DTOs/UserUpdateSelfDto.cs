@@ -1,4 +1,4 @@
-﻿namespace Domain.User.DTOs
+﻿namespace Domain
 {
     public class UserUpdateSelfDto
     {

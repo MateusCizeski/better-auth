@@ -1,6 +1,6 @@
 ﻿using ApiBase.Domain.View;
 
-namespace Domain.Users
+namespace Domain
 {
     public class UserView : IdGuidView
     {

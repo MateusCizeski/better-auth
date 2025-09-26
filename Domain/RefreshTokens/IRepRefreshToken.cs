@@ -1,6 +1,6 @@
 ﻿using ApiBase.Domain.Interfaces;
 
-namespace Domain.RefreshTokens
+namespace Domain
 {
     public interface IRepRefreshToken : IRepositoryBase<RefreshToken>
     {
