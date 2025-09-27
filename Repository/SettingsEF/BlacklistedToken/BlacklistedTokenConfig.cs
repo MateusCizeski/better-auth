@@ -1,4 +1,4 @@
-﻿using Domain.BlacklistedTokens;
+﻿using Domain;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -13,21 +13,26 @@ namespace Repository.SettingsEF.BlacklistedTokens
             builder.HasKey(x => x.Id);
 
             builder.Property(x => x.Id)
-            .HasColumnName("Id")
-            .ValueGeneratedNever()
-            .IsRequired();
+                .HasColumnName("Id")
+                .ValueGeneratedNever()
+                .IsRequired();
 
             builder.Property(x => x.Token)
-             .HasColumnName("Token")
-             .IsRequired();
+                 .HasColumnName("Token")
+                 .IsRequired();
 
             builder.Property(x => x.RevokedAt)
-             .HasColumnName("RevokedAt")
-             .IsRequired();
+                 .HasColumnName("RevokedAt")
+                 .IsRequired();
 
             builder.Property(x => x.UserId)
-             .HasColumnName("UserId")
-             .IsRequired();
+                 .HasColumnName("UserId")
+                 .IsRequired();
+
+            builder.HasOne(x => x.User)
+                .WithMany()
+                .HasForeignKey(x => x.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }
