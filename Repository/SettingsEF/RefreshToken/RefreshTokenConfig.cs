@@ -1,4 +1,4 @@
-﻿using Domain.RefreshTokens;
+﻿using Domain;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -17,8 +17,8 @@ namespace Repository.SettingsEF.RefreshTokens
                 .IsRequired();
 
             builder.Property(x => x.UserId)
-            .HasColumnName("UserId")
-            .IsRequired();
+                .HasColumnName("UserId")
+                .IsRequired();
 
             builder.Property(x => x.Token)
                 .HasColumnName("Token")

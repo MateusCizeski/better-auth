@@ -1,14 +1,9 @@
 ﻿using ApiBase.Application.ApplicationGuid;
 using ApiBase.Domain.Interfaces;
 using ApiBase.Infra.Extensions;
-using Azure.Core;
+using Domain;
 using Domain.BlacklistedTokens;
-using Domain.Jwt;
-using Domain.RefreshTokens;
-using Domain.User.DTOs;
-using Domain.Users;
 using Infra.Helper;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
 
 namespace Application.Users

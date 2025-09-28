@@ -1,8 +1,6 @@
 ﻿using ApiBase.Controller.BaseGuid;
 using Application.Users;
-using Domain.RefreshTokens;
-using Domain.User.DTOs;
-using Domain.Users;
+using Domain;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Controllers

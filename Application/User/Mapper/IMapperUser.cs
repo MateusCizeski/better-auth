@@ -1,6 +1,4 @@
-﻿using Domain.RefreshTokens;
-using Domain.User.DTOs;
-using Domain.Users;
+﻿using Domain;
 
 namespace Application.Users
 {
