@@ -1,6 +1,6 @@
 ﻿using ApiBase.Application.ApplicationGuid;
 using ApiBase.Domain.Interfaces;
-using Domain.RefreshTokens;
+using Domain;
 
 namespace Application.RefreshTokens
 {

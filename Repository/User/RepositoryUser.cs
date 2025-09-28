@@ -1,5 +1,5 @@
 ﻿using ApiBase.Repository.Repositorys;
-using Domain.Users;
+using Domain;
 
 namespace Repository.Users
 {

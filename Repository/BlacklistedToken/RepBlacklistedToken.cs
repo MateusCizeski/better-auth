@@ -1,5 +1,5 @@
-﻿using ApiBase.Repository.Contexts;
-using ApiBase.Repository.Repositorys;
+﻿using ApiBase.Repository.Repositorys;
+using Domain;
 using Domain.BlacklistedTokens;
 
 namespace Repository.BlacklistedTokens

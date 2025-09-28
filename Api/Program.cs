@@ -1,10 +1,8 @@
 using ApiBase.Domain.Interfaces;
 using ApiBase.Infra.UnitOfWork;
 using Application.Users;
+using Domain;
 using Domain.BlacklistedTokens;
-using Domain.Jwt;
-using Domain.RefreshTokens;
-using Domain.Users;
 using Infra.Middlewares;
 using Microsoft.EntityFrameworkCore;
 using Repository;

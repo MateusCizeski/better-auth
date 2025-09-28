@@ -1,5 +1,5 @@
 ﻿using ApiBase.Repository.Repositorys;
-using Domain.RefreshTokens;
+using Domain;
 
 namespace Repository.RefreshTokens
 {
