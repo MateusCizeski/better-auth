@@ -5,5 +5,6 @@ namespace Application.Roles
 {
     public interface IAplicRole : IApplicationGuid<RoleView>
     {
+        RoleView NewRole(NewRoleDTO dto);
     }
 }

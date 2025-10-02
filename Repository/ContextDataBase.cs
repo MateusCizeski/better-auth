@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Repository.SettingsEF.BlacklistedTokens;
 using Repository.SettingsEF.RefreshTokens;
+using Repository.SettingsEF.Roles;
 using Repository.SettingsEF.Users;
 
 namespace Repository
@@ -15,6 +16,7 @@ namespace Repository
             modelBuilder.ApplyConfiguration(new UserConfig());
             modelBuilder.ApplyConfiguration(new RefreshTokenConfig());
             modelBuilder.ApplyConfiguration(new BlacklistedTokenConfig());
+            modelBuilder.ApplyConfiguration(new RoleConfig());
         }
     }
 }

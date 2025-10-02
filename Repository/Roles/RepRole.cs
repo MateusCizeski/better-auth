@@ -6,6 +6,6 @@ namespace Repository.Roles
 {
     public class RepRole : RepositoryBase<Role>, IRepRole
     {
-        public RepRole(Context context) : base(context) { }
+        public RepRole(ContextDataBase context) : base(context) { }
     }
 }

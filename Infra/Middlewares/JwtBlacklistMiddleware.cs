@@ -12,22 +12,22 @@ namespace Infra.Middlewares
             _next = next;
         }
 
-        public async Task Invoke(HttpContext context, IRepBlacklistedToken repBlacklistedToken)
-        {
-            var token = context.Request.Headers["Authorization"].FirstOrDefault()?.Split(" ").Last();
+        //public async Task Invoke(HttpContext context, IRepBlacklistedToken repBlacklistedToken)
+        //{
+        //    var token = context.Request.Headers["Authorization"].FirstOrDefault()?.Split(" ").Last();
 
-            if (!string.IsNullOrEmpty(token))
-            {
-                var blacklisted = repBlacklistedToken.Get().Any(b => b.Token == token);
-                if (blacklisted)
-                {
-                    context.Response.StatusCode = 401;
-                    await context.Response.WriteAsync("Token revoked.");
-                    return;
-                }
-            }
+        //    if (!string.IsNullOrEmpty(token))
+        //    {
+        //        var blacklisted = repBlacklistedToken.Get().Any(b => b.Token == token);
+        //        if (blacklisted)
+        //        {
+        //            context.Response.StatusCode = 401;
+        //            await context.Response.WriteAsync("Token revoked.");
+        //            return;
+        //        }
+        //    }
 
-            await _next(context);
-        }
+        //    await _next(context);
+        //}
     }
 }
