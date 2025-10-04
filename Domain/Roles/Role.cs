@@ -8,8 +8,5 @@ namespace Domain
         public string Description { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
-
-        public List<UserRole> UserRoles { get; set; }
-        public List<RolePermission> RolePermissions { get; set; }
     }
 }

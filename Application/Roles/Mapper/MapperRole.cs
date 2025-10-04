@@ -26,5 +26,12 @@ namespace Application.Roles
                 UpdatedAt = role.UpdatedAt,
             };
         }
+
+        public void UpdateUser(Role role, UpdateRoleDTO dto)
+        {
+            role.Name = dto.Name;
+            role.Description = dto.Description;
+            role.UpdatedAt = DateTime.UtcNow;
+        }
     }
 }

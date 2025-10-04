@@ -22,14 +22,23 @@ builder.Services.Configure<JwtSettings>(
 
 builder.Services.AddScoped<DbContext>(provider => provider.GetRequiredService<ContextDataBase>());
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+#region User
 builder.Services.AddScoped<IRepositoryUser, RepositoryUser>();
 builder.Services.AddScoped<IApplicationUser, ApplicationUser>();
 builder.Services.AddScoped<IMapperUser, MapperUser>();
+#endregion
+#region efreshToken
 builder.Services.AddScoped<IRepRefreshToken, RepRefreshToken>();
+#endregion
+#region BlacklistedToken
 builder.Services.AddScoped<IRepBlacklistedToken, RepBlacklistedToken>();
+#endregion
+#region Role
 builder.Services.AddScoped<IAplicRole, AplicRole>();
 builder.Services.AddScoped<IMapperRole, MapperRole>();
 builder.Services.AddScoped<IRepRole, RepRole>();
+#endregion
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
