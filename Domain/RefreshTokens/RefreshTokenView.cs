@@ -13,7 +13,7 @@ namespace Domain
         public string RevokedByIp { get; set; }
         public string ReplacedByToken { get; set; }
 
-        public Domain.Users.UserView User { get; set; }
+        public UserView User { get; set; }
 
         public bool IsExpired => DateTime.UtcNow >= Expires;
         public bool IsActive => Revoked == null && !IsExpired;

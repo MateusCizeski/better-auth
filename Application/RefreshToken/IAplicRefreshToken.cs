@@ -1,5 +1,5 @@
 ﻿using ApiBase.Application.ApplicationGuid;
-using Domain.RefreshTokens;
+using Domain;
 
 namespace Application.RefreshTokens
 {

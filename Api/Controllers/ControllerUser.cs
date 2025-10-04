@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Api.Controllers
 {
     [ApiController]
-    [Route("api/v1/user")]
+    [Route("api/v1/users")]
     public class ControllerUser : GuidController<IApplicationUser, UserView>
     {
         private readonly IApplicationUser _applicationUser;
@@ -130,7 +130,7 @@ namespace Api.Controllers
             }
         }
 
-        [HttpGet("sessions")]
+        [HttpGet("session")]
         public IActionResult GetSessions()
         {
             try
@@ -146,7 +146,7 @@ namespace Api.Controllers
             }
         }
 
-        [HttpDelete("sessions/{deviceId}")]
+        [HttpDelete("session/{deviceId}")]
         public IActionResult RevokeSession([FromRoute] string deviceId)
         {
             try
