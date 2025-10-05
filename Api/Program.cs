@@ -1,5 +1,6 @@
 using ApiBase.Domain.Interfaces;
 using ApiBase.Infra.UnitOfWork;
+using Application.Permissions;
 using Application.Roles;
 using Application.Users;
 using Domain;
@@ -8,6 +9,7 @@ using Infra.Middlewares;
 using Microsoft.EntityFrameworkCore;
 using Repository;
 using Repository.BlacklistedTokens;
+using Repository.Permissions;
 using Repository.RefreshTokens;
 using Repository.Roles;
 using Repository.Users;
@@ -38,6 +40,11 @@ builder.Services.AddScoped<IRepBlacklistedToken, RepBlacklistedToken>();
 builder.Services.AddScoped<IAplicRole, AplicRole>();
 builder.Services.AddScoped<IMapperRole, MapperRole>();
 builder.Services.AddScoped<IRepRole, RepRole>();
+#endregion
+#region Permissions
+builder.Services.AddScoped<IAplicPermission, AplicPermission>();
+builder.Services.AddScoped<IMapperPermission, MapperPermission>();
+builder.Services.AddScoped<IRepPermission, RepPermission>();
 #endregion
 
 builder.Services.AddControllers();
