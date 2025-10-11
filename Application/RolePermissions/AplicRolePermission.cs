@@ -32,9 +32,9 @@ namespace Application.RolePermissions
             Commit();
         }
 
-        public void RemoveBindRolePermission(Guid roleId, Guid permissionId)
+        public void RemoveBindRolePermission(Guid id)
         {
-            var rolePermission = _repRolePermission.Get().Where(p => p.RoleId == roleId && p.PermissionId == permissionId).FirstOrDefault().uExceptionSeNull("Role and permission binding not exists.");
+            var rolePermission = _repRolePermission.Get().Where(p => p.Id == id).FirstOrDefault().uExceptionSeNull("Role and permission binding not exists.");
 
             _repRolePermission.Remove(rolePermission);
             Commit();

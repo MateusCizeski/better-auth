@@ -32,12 +32,12 @@ namespace Api.Controllers
         }
 
         [HttpDelete]
-        [Route("{roleId}/{permissionId}")]
-        public IActionResult RemoveBindingRolePermission([FromRoute] Guid roleId, [FromRoute] Guid permissionId)
+        [Route("{id}")]
+        public IActionResult RemoveBindingRolePermission([FromRoute] Guid id)
         {
             try
             {
-                _aplicRolePermission.RemoveBindRolePermission(roleId, permissionId);
+                _aplicRolePermission.RemoveBindRolePermission(id);
 
                 return RespondSuccess("Binding role and permission removed with a succes.");
             }
