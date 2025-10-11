@@ -7,10 +7,10 @@ namespace Api.Controllers
 {
     [ApiController]
     [Route("api/v1/roles")]
-    public class ControllerRole : GuidController<IAplicRole, RoleView>
+    public class RoleController : GuidController<IAplicRole, RoleView>
     {
         private readonly IAplicRole _aplicRole;
-        public ControllerRole(IAplicRole application) : base(application)
+        public RoleController(IAplicRole application) : base(application)
         {
             _aplicRole = application;
         }

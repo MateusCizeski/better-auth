@@ -7,10 +7,10 @@ namespace Api.Controllers
 {
     [ApiController]
     [Route("api/v1/permissions")]
-    public class ControllerPermission : GuidController<IAplicPermission, PermissionView>
+    public class PermissionController : GuidController<IAplicPermission, PermissionView>
     {
         private readonly IAplicPermission _aplicPermission;
-        public ControllerPermission(IAplicPermission application) : base(application)
+        public PermissionController(IAplicPermission application) : base(application)
         {
             _aplicPermission = application;
         }

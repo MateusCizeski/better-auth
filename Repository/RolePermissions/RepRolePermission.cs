@@ -6,6 +6,6 @@ namespace Repository.RolePermissions
 {
     public class RepRolePermission : RepositoryBase<RolePermission>, IRepRolePermission
     {
-        public RepRolePermission(Context context) : base(context) { }
+        public RepRolePermission(ContextDataBase context) : base(context) { }
     }
 }
