@@ -7,10 +7,10 @@ namespace Api.Controllers
 {
     [ApiController]
     [Route("api/v1/users")]
-    public class ControllerUser : GuidController<IApplicationUser, UserView>
+    public class UserController : GuidController<IApplicationUser, UserView>
     {
         private readonly IApplicationUser _applicationUser;
-        public ControllerUser(IApplicationUser application) : base(application)
+        public UserController(IApplicationUser application) : base(application)
         {
             _applicationUser = application;
         }

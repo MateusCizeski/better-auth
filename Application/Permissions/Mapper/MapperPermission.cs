@@ -26,5 +26,11 @@ namespace Application.Permissions
                 UpdatedAt = permission.UpdatedAt,
             };
         }
+
+        public void UpdatePermission(Permission permission, UpdatePermissionDTO dto)
+        {
+            permission.Key = dto.Key;
+            permission.Description = dto.Description;
+        }
     }
 }

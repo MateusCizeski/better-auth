@@ -1,6 +1,7 @@
 using ApiBase.Domain.Interfaces;
 using ApiBase.Infra.UnitOfWork;
 using Application.Permissions;
+using Application.RolePermissions;
 using Application.Roles;
 using Application.Users;
 using Domain;
@@ -11,6 +12,7 @@ using Repository;
 using Repository.BlacklistedTokens;
 using Repository.Permissions;
 using Repository.RefreshTokens;
+using Repository.RolePermissions;
 using Repository.Roles;
 using Repository.Users;
 
@@ -30,21 +32,31 @@ builder.Services.AddScoped<IRepositoryUser, RepositoryUser>();
 builder.Services.AddScoped<IApplicationUser, ApplicationUser>();
 builder.Services.AddScoped<IMapperUser, MapperUser>();
 #endregion
+
 #region efreshToken
 builder.Services.AddScoped<IRepRefreshToken, RepRefreshToken>();
 #endregion
+
 #region BlacklistedToken
 builder.Services.AddScoped<IRepBlacklistedToken, RepBlacklistedToken>();
 #endregion
+
 #region Role
 builder.Services.AddScoped<IAplicRole, AplicRole>();
 builder.Services.AddScoped<IMapperRole, MapperRole>();
 builder.Services.AddScoped<IRepRole, RepRole>();
 #endregion
+
 #region Permissions
 builder.Services.AddScoped<IAplicPermission, AplicPermission>();
 builder.Services.AddScoped<IMapperPermission, MapperPermission>();
 builder.Services.AddScoped<IRepPermission, RepPermission>();
+#endregion
+
+#region RolePermission
+builder.Services.AddScoped<IAplicRolePermission, AplicRolePermission>();
+builder.Services.AddScoped<IMapperRolePermission, MapperRolePermission>();
+builder.Services.AddScoped<IRepRolePermission, RepRolePermission>();
 #endregion
 
 builder.Services.AddControllers();
@@ -55,7 +67,7 @@ var app = builder.Build();
 
 app.UseSwagger();
 app.UseSwaggerUI();
-//app.UseMiddleware<JwtBlacklistMiddleware>();
+app.UseMiddleware<JwtBlacklistMiddleware>();
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
