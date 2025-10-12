@@ -12,5 +12,6 @@ namespace Application.Users
         void Logout(string refreshToken, string ipAddress, string accessToken);
         IEnumerable<SessionViewDTO> GetSessions(Guid userId);
         void RevokeSession(Guid userId, string deviceId);
+        IEnumerable<string> GetUserPermissions(Guid userId);
     }
 }
