@@ -15,18 +15,27 @@ namespace Application.Users
         private readonly IRepositoryUser _repositoryUser;
         private readonly IRepRefreshToken _repRefreshToken;
         private readonly IRepBlacklistedToken _repBlacklistedToken;
+        private readonly IRepRolePermission _repRolePermission;
+        private readonly IRepPermission _repPermission;
+        private readonly IRepUserRole _repUserRole;
         public ApplicationUser(IUnitOfWork unitOfWork, 
                                IRepositoryUser repository, 
                                IMapperUser mapperUser,
                                IRepRefreshToken repRefreshToken,
                                IOptions<JwtSettings> jwtOptions,
-                               IRepBlacklistedToken repBlacklistedToken) : base(unitOfWork, repository)
+                               IRepBlacklistedToken repBlacklistedToken,
+                               IRepRolePermission repRolePermission,
+                               IRepPermission repPermission,
+                               IRepUserRole repUserRole) : base(unitOfWork, repository)
         {
             _repositoryUser = repository;
             _mapperUser = mapperUser;
             _jwtSettings = jwtOptions.Value;
             _repRefreshToken = repRefreshToken;
             _repBlacklistedToken = repBlacklistedToken;
+            _repRolePermission = repRolePermission;
+            _repPermission= repPermission;
+            _repUserRole = repUserRole;
         }
 
         public LoginResultDTO Login(LoginDTO dto, string ipAddress, string deviceId, string userAgent)
@@ -169,6 +178,17 @@ namespace Application.Users
             session.Revoked = DateTime.UtcNow;
 
             Commit();
+        }
+
+        public IEnumerable<string> GetUserPermissions(Guid userId)
+        {
+            var permissions = (from ur in _repUserRole.Get()
+                               join rp in _repRolePermission.Get() on ur.RoleId equals rp.RoleId
+                               join p in _repPermission.Get() on rp.PermissionId equals p.Id
+                               where ur.UserId == userId
+                               select p.Key).Distinct().ToList();
+
+            return permissions;
         }
     }
 }

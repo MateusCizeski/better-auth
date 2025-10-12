@@ -161,5 +161,20 @@ namespace Api.Controllers
                 return RespondError(e.Message);
             }
         }
+
+        [HttpGet("{userId}/permissions")]
+        public IActionResult GetUserPermissions(Guid userId)
+        {
+            try
+            {
+                var permissions = _applicationUser.GetUserPermissions(userId);
+
+                return RespondSuccess("Ok", permissions);
+            }
+            catch (Exception e)
+            {
+                return RespondError(e.Message);
+            }
+        }
     }
 }
