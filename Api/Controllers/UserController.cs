@@ -1,6 +1,7 @@
 ﻿using ApiBase.Controller.BaseGuid;
 using Application.Users;
 using Domain;
+using Infra.Middlewares;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Controllers
@@ -16,6 +17,7 @@ namespace Api.Controllers
         }
 
         [HttpPost]
+        [RequirePermission("user.create")]
         public IActionResult NewUser([FromBody] NewUserDTO dto)
         {
             try
@@ -31,6 +33,7 @@ namespace Api.Controllers
         }
 
         [HttpPut("{id}")]
+        [RequirePermission("user.create")]
         public IActionResult UpdateUser([FromRoute] Guid id, [FromBody] UserUpdateSelfDto dto)
         {
             try

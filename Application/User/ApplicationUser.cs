@@ -5,6 +5,8 @@ using Domain;
 using Domain.BlacklistedTokens;
 using Infra.Helper;
 using Microsoft.Extensions.Options;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 
 namespace Application.Users
 {
@@ -51,6 +53,29 @@ namespace Application.Users
             {
                 throw new UnauthorizedAccessException("Invalid credentials.");
             }
+
+            var userRoles = _repUserRole.Get()
+                .Where(ur => ur.UserId == user.Id)
+                .Select(ur => ur.Role.Name)
+                .ToList();
+
+            var userPermissions = (
+                from ur in _repUserRole.Get()
+                join rp in _repRolePermission.Get() on ur.RoleId equals rp.RoleId
+                join p in _repPermission.Get() on rp.PermissionId equals p.Id
+                where ur.UserId == user.Id
+                select p.Key).Distinct().ToList();
+
+            var claims = new List<Claim>
+            {
+                new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
+                new Claim(JwtRegisteredClaimNames.Email, user.Email),
+                new Claim("name", user.Name),
+                new Claim("id", user.Id.ToString())
+            };
+
+            claims.AddRange(userRoles.Select(r => new Claim("role", r)));
+            claims.AddRange(userPermissions.Select(p => new Claim("permission", p)));
 
             var token = JwtTokenHelper.GenerateToken(user.Id, user.Email, user.Name, _jwtSettings.SecretKey, _jwtSettings.Issuer, _jwtSettings.Audience, 24);
             var refreshToken = _mapperUser.NewRefreshToken(user, ipAddress, deviceId, userAgent);
