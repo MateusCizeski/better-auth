@@ -68,6 +68,7 @@ var app = builder.Build();
 app.UseSwagger();
 app.UseSwaggerUI();
 app.UseMiddleware<JwtBlacklistMiddleware>();
+app.UseMiddleware<PermissionMiddleware>();
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
