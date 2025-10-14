@@ -2,7 +2,7 @@
 
 namespace Application.UserRoles
 {
-    public class MaperUserRole : IMapperUserRole
+    public class MapperUserRole : IMapperUserRole
     {
         public UserRole NewUserRole(Guid userId, Guid roleId)
         {

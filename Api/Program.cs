@@ -3,6 +3,7 @@ using ApiBase.Infra.UnitOfWork;
 using Application.Permissions;
 using Application.RolePermissions;
 using Application.Roles;
+using Application.UserRoles;
 using Application.Users;
 using Domain;
 using Domain.BlacklistedTokens;
@@ -14,6 +15,7 @@ using Repository.Permissions;
 using Repository.RefreshTokens;
 using Repository.RolePermissions;
 using Repository.Roles;
+using Repository.UserRoles;
 using Repository.Users;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -57,6 +59,12 @@ builder.Services.AddScoped<IRepPermission, RepPermission>();
 builder.Services.AddScoped<IAplicRolePermission, AplicRolePermission>();
 builder.Services.AddScoped<IMapperRolePermission, MapperRolePermission>();
 builder.Services.AddScoped<IRepRolePermission, RepRolePermission>();
+#endregion
+
+#region UserRole
+builder.Services.AddScoped<IAplicUserRole, AplicUserRole>();
+builder.Services.AddScoped<IMapperUserRole, MapperUserRole>();
+builder.Services.AddScoped<IRepUserRole, RepUserRole>();
 #endregion
 
 builder.Services.AddControllers();
