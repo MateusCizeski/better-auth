@@ -1,3 +1,4 @@
+using Api.Extension;
 using ApiBase.Domain.Interfaces;
 using ApiBase.Infra.UnitOfWork;
 using Application.Permissions;
@@ -72,31 +73,14 @@ builder.Services.AddControllers();
 builder.Services.AddJwtBearerAuthentication(builder.Configuration);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddSwaggerGen(c =>
-{
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "API Base", Version = "v1" });
-
-    var securityScheme = new OpenApiSecurityScheme
-    {
-        Name = "Authorization",
-        Description = "Insira o token JWT: Bearer {seu token}",
-        In = ParameterLocation.Header,
-        Type = SecuritySchemeType.Http,
-        Scheme = "bearer",
-        BearerFormat = "JWT"
-    };
-
-    c.AddSecurityDefinition("Bearer", securityScheme);
-    c.AddSecurityRequirement(new OpenApiSecurityRequirement
-    {
-        { securityScheme, Array.Empty<string>() }
-    });
-});
+builder.Services.AddSwaggerGen();
+builder.Services.AddApiDoc();
 
 builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
+app.UseApiDoc();
 app.UseSwagger();
 app.UseSwaggerUI();
 app.UseHttpsRedirection();
