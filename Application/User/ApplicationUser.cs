@@ -184,8 +184,6 @@ namespace Application.Users
                 .Where(p => p.UserId == userId)
                 .Select(p => new SessionViewDTO
                 {
-                    DeviceId = p.DeviceId,
-                    UserAgent = p.UserAgent,
                     Created = p.Created,
                     Revoked = p.Revoked,
                     Expires = p.Expires,
@@ -195,8 +193,7 @@ namespace Application.Users
 
         public void RevokeSession(Guid userId, string deviceId)
         {
-            var session = _repRefreshToken.Get().FirstOrDefault(p => p.UserId == userId && 
-                                                                     p.DeviceId == deviceId);
+            var session = _repRefreshToken.Get().FirstOrDefault(p => p.UserId == userId);
 
             if (session == null) throw new InvalidOperationException("Session not found.");
 

@@ -7,8 +7,9 @@ using Application.UserRoles;
 using Application.Users;
 using Domain;
 using Domain.BlacklistedTokens;
-using Infra.Middlewares;
+using Infra.Helper;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 using Repository;
 using Repository.BlacklistedTokens;
 using Repository.Permissions;
@@ -68,16 +69,38 @@ builder.Services.AddScoped<IRepUserRole, RepUserRole>();
 #endregion
 
 builder.Services.AddControllers();
+builder.Services.AddJwtBearerAuthentication(builder.Configuration);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "API Base", Version = "v1" });
+
+    var securityScheme = new OpenApiSecurityScheme
+    {
+        Name = "Authorization",
+        Description = "Insira o token JWT: Bearer {seu token}",
+        In = ParameterLocation.Header,
+        Type = SecuritySchemeType.Http,
+        Scheme = "bearer",
+        BearerFormat = "JWT"
+    };
+
+    c.AddSecurityDefinition("Bearer", securityScheme);
+    c.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        { securityScheme, Array.Empty<string>() }
+    });
+});
+
+builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
 app.UseSwagger();
 app.UseSwaggerUI();
-app.UseMiddleware<JwtBlacklistMiddleware>();
-app.UseMiddleware<PermissionMiddleware>();
 app.UseHttpsRedirection();
+app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
 
