@@ -12,12 +12,8 @@ namespace Domain
         public DateTime? Revoked { get; set; }
         public string RevokedByIp { get; set; }
         public string ReplacedByToken { get; set; }
-
-        public string DeviceId { get; set; }
-        public string UserAgent { get; set; }
-
+        
         public User User { get; set; }
-
         public bool IsExpired => DateTime.UtcNow >= Expires;
         public bool IsActive => Revoked == null && !IsExpired;
     }

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/v1/users")]
     public class UserController : GuidController<IApplicationUser, UserView>
@@ -16,6 +17,7 @@ namespace Api.Controllers
             _applicationUser = application;
         }
 
+        [AllowAnonymous]
         [HttpPost]
         public IActionResult NewUser([FromBody] NewUserDTO dto)
         {
@@ -47,6 +49,7 @@ namespace Api.Controllers
             }
         }
 
+        [AllowAnonymous]
         [HttpPut("login")]
         public IActionResult Login([FromBody] LoginDTO dto)
         {
@@ -78,6 +81,7 @@ namespace Api.Controllers
             }
         }
 
+        [AllowAnonymous]
         [HttpPost("refresh")]
         public IActionResult Refresh([FromBody] RefreshRequestDTO dto)
         {

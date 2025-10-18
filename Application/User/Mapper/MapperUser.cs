@@ -13,9 +13,7 @@ namespace Application.Users
                 UserId = user.Id,
                 Expires = DateTime.UtcNow.AddDays(31),
                 Created = DateTime.UtcNow,
-                CreatedByIp = ipAddress,
-                DeviceId = deviceId,
-                UserAgent = userAgent
+                CreatedByIp = ipAddress
             };
         }
 
