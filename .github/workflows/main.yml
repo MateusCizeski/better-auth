@@ -18,16 +18,16 @@ jobs:
           mkdir -p ~/.ssh
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
-          ssh-keyscan ssh.meuservidorubuntu.com.br >> ~/.ssh/known_hosts
+          eval "$(ssh-agent -s)"
+          ssh-add ~/.ssh/id_ed25519
+          ssh-keyscan -H ssh.meuservidorubuntu.com.br >> ~/.ssh/known_hosts
 
       - name: 🚀 Deploy no servidor
         run: |
-          ssh -o StrictHostKeyChecking=no \
-              -o ProxyCommand="cloudflared access ssh --hostname %h" \
-              mateus@ssh.meuservidorubuntu.com.br "
-              if [ ! -d /var/www/better-auth/.git ]; then
-                git clone https://github.com/MateusCizeski/better-auth /var/www/better-auth
-              else
-                cd /var/www/better-auth && git pull origin main
-              fi
-              "
+          ssh -o ProxyCommand="cloudflared access ssh --hostname %h" mateus@ssh.meuservidorubuntu.com.br "
+            if [ ! -d /var/www/better-auth/.git ]; then
+              git clone https://github.com/MateusCizeski/better-auth /var/www/better-auth
+            else
+              cd /var/www/better-auth && git pull origin main
+            fi
+          "
