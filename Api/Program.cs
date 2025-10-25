@@ -10,7 +10,6 @@ using Domain;
 using Domain.BlacklistedTokens;
 using Infra.Helper;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.OpenApi.Models;
 using Repository;
 using Repository.BlacklistedTokens;
 using Repository.Permissions;
@@ -79,6 +78,12 @@ builder.Services.AddApiDoc();
 builder.Services.AddAuthorization();
 
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<ContextDataBase>();
+    db.Database.EnsureCreated();
+}
 
 app.UseApiDoc();
 app.UseSwagger();
