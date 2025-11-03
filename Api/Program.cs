@@ -68,6 +68,18 @@ builder.Services.AddScoped<IMapperUserRole, MapperUserRole>();
 builder.Services.AddScoped<IRepUserRole, RepUserRole>();
 #endregion
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowFrontendDev", policy =>
+        policy.WithOrigins(
+            "http://localhost:5173",                 
+            "https://meuservidorubuntu.com.br"
+        )
+        .AllowAnyHeader()
+        .AllowAnyMethod()
+        .AllowCredentials());
+});
+
 builder.Services.AddControllers();
 builder.Services.AddJwtBearerAuthentication(builder.Configuration);
 builder.Services.AddEndpointsApiExplorer();
@@ -79,16 +91,11 @@ builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
-using (var scope = app.Services.CreateScope())
-{
-    var db = scope.ServiceProvider.GetRequiredService<ContextDataBase>();
-    db.Database.EnsureCreated();
-}
-
 app.UseApiDoc();
 app.UseSwagger();
 app.UseSwaggerUI();
 app.UseHttpsRedirection();
+app.UseCors("AllowFrontendDev");
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
