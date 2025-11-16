@@ -69,11 +69,7 @@ namespace Api.Controllers
                     Expires = result.ExpiresAt
                 });
 
-                return RespondSuccess("User successfully authenticated.", new
-                {
-                    Token = result.Token,
-                    ExpiresAt = result.ExpiresAt
-                });
+                return RespondSuccess("User successfully authenticated.", result);
             }
             catch (Exception e)
             {
