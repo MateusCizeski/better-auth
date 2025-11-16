@@ -43,11 +43,6 @@ namespace Repository.SettingsEF.Users
              .HasColumnName("UpdatedAt")
              .IsRequired();
 
-            builder.Property(x => x.UserName)
-                .HasColumnName("Username")
-                .HasMaxLength(100)
-                .IsRequired();
-
             builder.Property(x => x.LastLoginAt)
              .HasColumnName("LastLoginAt")
              .IsRequired();

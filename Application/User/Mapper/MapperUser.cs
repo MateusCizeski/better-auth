@@ -24,7 +24,6 @@ namespace Application.Users
             return new User
             {
                 Name = dto.Name,
-                UserName = dto.UserName,
                 Email = dto.Email,
                 PasswordHash = hash,
                 PasswordSalt = salt,
@@ -41,7 +40,6 @@ namespace Application.Users
             {
                 Id = user.Id,
                 Name = user.Name,
-                UserName = user.UserName,
                 Email = user.Email,
                 CreatedAt = user.CreatedAt,
                 UpdatedAt = user.UpdatedAt,
@@ -52,7 +50,6 @@ namespace Application.Users
         public void UpdateUser(User user, UserUpdateSelfDto dto)
         {
             user.Name = dto.Name;
-            user.UserName = dto.Username;
         }
     }
 }

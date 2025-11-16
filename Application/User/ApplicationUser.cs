@@ -86,6 +86,8 @@ namespace Application.Users
             return new LoginResultDTO
             {
                 Token = token,
+                Email = user.Email,
+                Name = user.Name,
                 RefreshToken = refreshToken.Token,
                 ExpiresAt = DateTime.UtcNow.AddHours(24)
             };
@@ -117,11 +119,6 @@ namespace Application.Users
             if(_repositoryUser.Get().Any(u => u.Email == dto.Email))
             {
                 throw new InvalidOperationException("Email is already registered.");
-            }
-
-            if (_repositoryUser.Get().Any(u => u.UserName == dto.UserName))
-            {
-                throw new InvalidOperationException("Username is already taken.");
             }
 
             var user = _mapperUser.NewUser(dto);
@@ -164,13 +161,6 @@ namespace Application.Users
         public UserView UpdateUser(Guid id, UserUpdateSelfDto dto)
         {
             var user = _repositoryUser.GetById(id).uExceptionSeNull("User not found.");
-
-            if (!string.Equals(user.UserName, dto.Username, StringComparison.OrdinalIgnoreCase))
-            {
-                bool exists = _repositoryUser.Get().Any(u => u.UserName == dto.Username && u.Id != id);
-
-                if (exists) throw new InvalidOperationException("Username is already taken.");
-            }
 
             _mapperUser.UpdateUser(user, dto);
             Commit();
