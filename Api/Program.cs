@@ -1,22 +1,12 @@
 using Api.Extension;
 using ApiBase.Domain.Interfaces;
 using ApiBase.Infra.UnitOfWork;
-using Application.Permissions;
-using Application.RolePermissions;
-using Application.Roles;
-using Application.UserRoles;
 using Application.Users;
 using Domain;
-using Domain.BlacklistedTokens;
 using Infra.Helper;
 using Microsoft.EntityFrameworkCore;
 using Repository;
-using Repository.BlacklistedTokens;
-using Repository.Permissions;
 using Repository.RefreshTokens;
-using Repository.RolePermissions;
-using Repository.Roles;
-using Repository.UserRoles;
 using Repository.Users;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -36,36 +26,8 @@ builder.Services.AddScoped<IApplicationUser, ApplicationUser>();
 builder.Services.AddScoped<IMapperUser, MapperUser>();
 #endregion
 
-#region efreshToken
+#region RefreshToken
 builder.Services.AddScoped<IRepRefreshToken, RepRefreshToken>();
-#endregion
-
-#region BlacklistedToken
-builder.Services.AddScoped<IRepBlacklistedToken, RepBlacklistedToken>();
-#endregion
-
-#region Role
-builder.Services.AddScoped<IAplicRole, AplicRole>();
-builder.Services.AddScoped<IMapperRole, MapperRole>();
-builder.Services.AddScoped<IRepRole, RepRole>();
-#endregion
-
-#region Permissions
-builder.Services.AddScoped<IAplicPermission, AplicPermission>();
-builder.Services.AddScoped<IMapperPermission, MapperPermission>();
-builder.Services.AddScoped<IRepPermission, RepPermission>();
-#endregion
-
-#region RolePermission
-builder.Services.AddScoped<IAplicRolePermission, AplicRolePermission>();
-builder.Services.AddScoped<IMapperRolePermission, MapperRolePermission>();
-builder.Services.AddScoped<IRepRolePermission, RepRolePermission>();
-#endregion
-
-#region UserRole
-builder.Services.AddScoped<IAplicUserRole, AplicUserRole>();
-builder.Services.AddScoped<IMapperUserRole, MapperUserRole>();
-builder.Services.AddScoped<IRepUserRole, RepUserRole>();
 #endregion
 
 builder.Services.AddCors(options =>

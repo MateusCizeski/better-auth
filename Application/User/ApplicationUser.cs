@@ -2,7 +2,6 @@
 using ApiBase.Domain.Interfaces;
 using ApiBase.Infra.Extensions;
 using Domain;
-using Domain.BlacklistedTokens;
 using Infra.Helper;
 using Microsoft.Extensions.Options;
 using System.IdentityModel.Tokens.Jwt;
@@ -16,28 +15,16 @@ namespace Application.Users
         private readonly JwtSettings _jwtSettings;
         private readonly IRepositoryUser _repositoryUser;
         private readonly IRepRefreshToken _repRefreshToken;
-        private readonly IRepBlacklistedToken _repBlacklistedToken;
-        private readonly IRepRolePermission _repRolePermission;
-        private readonly IRepPermission _repPermission;
-        private readonly IRepUserRole _repUserRole;
-        public ApplicationUser(IUnitOfWork unitOfWork, 
-                               IRepositoryUser repository, 
+        public ApplicationUser(IUnitOfWork unitOfWork,
+                               IRepositoryUser repository,
                                IMapperUser mapperUser,
                                IRepRefreshToken repRefreshToken,
-                               IOptions<JwtSettings> jwtOptions,
-                               IRepBlacklistedToken repBlacklistedToken,
-                               IRepRolePermission repRolePermission,
-                               IRepPermission repPermission,
-                               IRepUserRole repUserRole) : base(unitOfWork, repository)
+                               IOptions<JwtSettings> jwtOptions) : base(unitOfWork, repository)
         {
             _repositoryUser = repository;
             _mapperUser = mapperUser;
             _jwtSettings = jwtOptions.Value;
             _repRefreshToken = repRefreshToken;
-            _repBlacklistedToken = repBlacklistedToken;
-            _repRolePermission = repRolePermission;
-            _repPermission= repPermission;
-            _repUserRole = repUserRole;
         }
 
         public LoginResultDTO Login(LoginDTO dto, string ipAddress, string deviceId, string userAgent)
@@ -54,18 +41,6 @@ namespace Application.Users
                 throw new UnauthorizedAccessException("Invalid credentials.");
             }
 
-            var userRoles = _repUserRole.Get()
-                .Where(ur => ur.UserId == user.Id)
-                .Select(ur => ur.Role.Name)
-                .ToList();
-
-            var userPermissions = (
-                from ur in _repUserRole.Get()
-                join rp in _repRolePermission.Get() on ur.RoleId equals rp.RoleId
-                join p in _repPermission.Get() on rp.PermissionId equals p.Id
-                where ur.UserId == user.Id
-                select p.Key).Distinct().ToList();
-
             var claims = new List<Claim>
             {
                 new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
@@ -73,9 +48,6 @@ namespace Application.Users
                 new Claim("name", user.Name),
                 new Claim("id", user.Id.ToString())
             };
-
-            claims.AddRange(userRoles.Select(r => new Claim("role", r)));
-            claims.AddRange(userPermissions.Select(p => new Claim("permission", p)));
 
             var token = JwtTokenHelper.GenerateToken(user.Id, user.Email, user.Name, _jwtSettings.SecretKey, _jwtSettings.Issuer, _jwtSettings.Audience, 24);
             var refreshToken = _mapperUser.NewRefreshToken(user, ipAddress, deviceId, userAgent);
@@ -91,27 +63,6 @@ namespace Application.Users
                 RefreshToken = refreshToken.Token,
                 ExpiresAt = DateTime.UtcNow.AddHours(24)
             };
-        }
-
-        public void Logout(string refreshToken, string ipAddress, string accessToken)
-        {
-            var token = _repRefreshToken.Get().FirstOrDefault(p => p.Token == refreshToken);
-
-            if (token == null) return;
-
-            token.Revoked = DateTime.UtcNow;
-            token.RevokedByIp = ipAddress;
-
-            var blacklisted = new BlacklistedToken
-            {
-                Token = accessToken,
-                UserId = token.UserId,
-                RevokedAt = DateTime.UtcNow
-            };
-
-            _repBlacklistedToken.Insert(blacklisted);
-
-            Commit();
         }
 
         public UserView NewUser(NewUserDTO dto)
@@ -166,41 +117,6 @@ namespace Application.Users
             Commit();
 
             return _mapperUser.ToView(user);
-        }
-
-        public IEnumerable<SessionViewDTO> GetSessions(Guid userId)
-        {
-            return _repRefreshToken.Get()
-                .Where(p => p.UserId == userId)
-                .Select(p => new SessionViewDTO
-                {
-                    Created = p.Created,
-                    Revoked = p.Revoked,
-                    Expires = p.Expires,
-                    IpAddress = p.CreatedByIp
-                }).ToList();
-        }
-
-        public void RevokeSession(Guid userId, string deviceId)
-        {
-            var session = _repRefreshToken.Get().FirstOrDefault(p => p.UserId == userId);
-
-            if (session == null) throw new InvalidOperationException("Session not found.");
-
-            session.Revoked = DateTime.UtcNow;
-
-            Commit();
-        }
-
-        public IEnumerable<string> GetUserPermissions(Guid userId)
-        {
-            var permissions = (from ur in _repUserRole.Get()
-                               join rp in _repRolePermission.Get() on ur.RoleId equals rp.RoleId
-                               join p in _repPermission.Get() on rp.PermissionId equals p.Id
-                               where ur.UserId == userId
-                               select p.Key).Distinct().ToList();
-
-            return permissions;
         }
     }
 }
