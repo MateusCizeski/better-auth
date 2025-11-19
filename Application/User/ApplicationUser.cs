@@ -31,7 +31,7 @@ namespace Application.Users
         {
             var user = _repositoryUser.Get().Where(p => p.Email == dto.Email).FirstOrDefault();
 
-            if(user == null || !user.IsActive)
+            if(user == null || user.IsDeleted)
             {
                 throw new UnauthorizedAccessException("Invalid or inactive user.");
             }
@@ -60,6 +60,7 @@ namespace Application.Users
                 Token = token,
                 Email = user.Email,
                 Name = user.Name,
+                UserName = user.UserName,
                 RefreshToken = refreshToken.Token,
                 ExpiresAt = DateTime.UtcNow.AddHours(24)
             };
@@ -72,7 +73,12 @@ namespace Application.Users
                 throw new InvalidOperationException("Email is already registered.");
             }
 
-            var user = _mapperUser.NewUser(dto);
+            var userName = UsernameGenerator.Generate(
+                dto.Name,
+                username => _repositoryUser.Get().Any(u => u.UserName == username)
+            );
+
+            var user = _mapperUser.NewUser(dto, userName);
 
             _repositoryUser.Insert(user);
             Commit();

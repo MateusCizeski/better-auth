@@ -17,19 +17,20 @@ namespace Application.Users
             };
         }
 
-        public User NewUser(NewUserDTO dto)
+        public User NewUser(NewUserDTO dto, string username)
         {
             var (hash, salt) = PasswordHelper.HashPassword(dto.Password);
 
             return new User
             {
                 Name = dto.Name,
+                UserName = username,
                 Email = dto.Email,
                 PasswordHash = hash,
                 PasswordSalt = salt,
                 CreatedAt = DateTime.UtcNow,
                 UpdatedAt = DateTime.UtcNow,
-                IsActive = true,
+                IsDeleted = false,
                 EmailConfirmed = false
             };
         }
@@ -40,10 +41,11 @@ namespace Application.Users
             {
                 Id = user.Id,
                 Name = user.Name,
+                UserName = user.UserName,
                 Email = user.Email,
                 CreatedAt = user.CreatedAt,
                 UpdatedAt = user.UpdatedAt,
-                IsActive = user.IsActive
+                IsDeleted = user.IsDeleted
             };
         }
 

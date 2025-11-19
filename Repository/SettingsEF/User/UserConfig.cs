@@ -21,6 +21,16 @@ namespace Repository.SettingsEF.Users
              .HasColumnName("Name")
              .HasMaxLength(100)
              .IsRequired();
+
+            builder.Property(x => x.UserName)
+             .HasColumnName("UserName")
+             .HasMaxLength(100)
+             .IsRequired();
+
+            builder.Property(x => x.IsDeleted)
+             .HasColumnName("IsDeleted")
+             .HasMaxLength(100)
+             .IsRequired();
             
             builder.Property(x => x.Email)
              .HasColumnName("Email")
@@ -57,6 +67,12 @@ namespace Repository.SettingsEF.Users
             builder.Property(x => x.EmailConfirmed)
              .HasColumnName("EmailConfirmed")
              .IsRequired();
+
+            builder.Property(x => x.PasswordResetToken)
+             .HasColumnName("PasswordResetToken");
+
+            builder.Property(x => x.PasswordResetTokenExpires)
+             .HasColumnName("PasswordResetTokenExpires");
         }
     }
 }

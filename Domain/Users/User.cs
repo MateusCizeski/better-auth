@@ -5,6 +5,7 @@ namespace Domain
     public class User : EntityGuid
     {
         public string Name { get; set; }
+        public string UserName { get; set; }
         public string Email { get; set; }
         public string PasswordHash { get; set; }
         public string PasswordSalt { get; set; }
@@ -13,7 +14,9 @@ namespace Domain
         public DateTime LastLoginAt { get; set; }
         public DateTime? LockoutEnd { get; set; }
         public int FailedLoginAttempts { get; set; }
-        public bool IsActive { get; set; }
+        public bool IsDeleted { get; set; }
         public bool EmailConfirmed { get; set; }
+        public string PasswordResetToken { get; set; }
+        public DateTime? PasswordResetTokenExpires { get; set; }
     }
 }
