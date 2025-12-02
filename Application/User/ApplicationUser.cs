@@ -57,6 +57,7 @@ namespace Application.Users
 
             return new LoginResultDTO
             {
+                Id = user.Id,
                 Token = token,
                 Email = user.Email,
                 Name = user.Name,
