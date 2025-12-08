@@ -37,9 +37,8 @@ builder.Services.AddCors(options =>
             "http://localhost:5173",                 
             "https://meuservidorubuntu.com.br"
         )
-        .AllowAnyHeader()
-        .AllowAnyMethod()
-        .AllowCredentials());
+        .WithHeaders("Content-Type", "Authorization")
+        .WithMethods("GET", "POST", "PUT", "DELETE"));
 });
 
 builder.Services.AddControllers();
@@ -57,6 +56,15 @@ app.UseApiDoc();
 app.UseSwagger();
 app.UseSwaggerUI();
 app.UseHttpsRedirection();
+
+app.Use(async (context, next) =>
+{
+    context.Response.Headers.Add("Content-Security-Policy",
+        "default-src 'self'; script-src 'self'; connect-src 'self' https://meuservidorubuntu.com.br;");
+
+    await next();
+});
+
 app.UseCors("AllowFrontendDev");
 app.UseAuthentication();
 app.UseAuthorization();

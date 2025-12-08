@@ -79,16 +79,16 @@ namespace Api.Controllers
 
         [AllowAnonymous]
         [HttpPost("refresh")]
-        public IActionResult Refresh([FromBody] RefreshRequestDTO dto)
+        public IActionResult Refresh()
         {
             try
             {
                 var ipAddress = HttpContext.Connection.RemoteIpAddress?.ToString();
-                var refreshToken = Request.Cookies["refreshToken"] ?? dto.RefreshToken;
+                var refreshToken = Request.Cookies["refreshToken"];
                 var userAgent = Request.Headers["User-Agent"].ToString();
                 var deviceId = Request.Headers["X-Device-Id"].ToString();
 
-                var result = _applicationUser.Refresh(refreshToken, ipAddress, userAgent, deviceId);
+                var result = _applicationUser.Refresh(refreshToken, ipAddress, deviceId, userAgent);
 
                 Response.Cookies.Append("refreshToken", result.RefreshToken, new CookieOptions
                 {

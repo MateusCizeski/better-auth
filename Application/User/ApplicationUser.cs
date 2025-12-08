@@ -31,13 +31,33 @@ namespace Application.Users
         {
             var user = _repositoryUser.Get().Where(p => p.Email == dto.Email).FirstOrDefault();
 
-            if(user == null || user.IsDeleted)
+            if (user == null || user.IsDeleted)
             {
                 throw new UnauthorizedAccessException("Invalid or inactive user.");
             }
 
-            if(!PasswordHelper.VerifyPassword(dto.Password, user.PasswordHash, user.PasswordSalt))
+            if (user.LockoutEnd.HasValue && user.LockoutEnd.Value > DateTime.UtcNow)
             {
+                throw new UnauthorizedAccessException("Account temporarily locked due to multiple failed attempts.");
+            }
+
+            if (!PasswordHelper.VerifyPassword(dto.Password, user.PasswordHash, user.PasswordSalt))
+            {
+                throw new UnauthorizedAccessException("Invalid credentials.");
+            }
+
+            if (!PasswordHelper.VerifyPassword(dto.Password, user.PasswordHash, user.PasswordSalt))
+            {
+                user.FailedLoginAttempts++;
+
+                if (user.FailedLoginAttempts >= 5)
+                {
+                    user.LockoutEnd = DateTime.UtcNow.AddMinutes(10);
+                    Commit();
+                    throw new UnauthorizedAccessException("Too many failed attempts. Account locked for 10 minutes.");
+                }
+
+                Commit();
                 throw new UnauthorizedAccessException("Invalid credentials.");
             }
 
@@ -49,8 +69,11 @@ namespace Application.Users
                 new Claim("id", user.Id.ToString())
             };
 
-            var token = JwtTokenHelper.GenerateToken(user.Id, user.Email, user.Name, _jwtSettings.SecretKey, _jwtSettings.Issuer, _jwtSettings.Audience, 24);
+            var token = JwtTokenHelper.GenerateToken(claims, _jwtSettings.SecretKey, _jwtSettings.Issuer, _jwtSettings.Audience, 24);
             var refreshToken = _mapperUser.NewRefreshToken(user, ipAddress, deviceId, userAgent);
+            user.FailedLoginAttempts = 0;
+            user.LockoutEnd = null;
+            user.LastLoginAt = DateTime.UtcNow;
 
             _repRefreshToken.Insert(refreshToken);
             Commit();
@@ -62,14 +85,13 @@ namespace Application.Users
                 Email = user.Email,
                 Name = user.Name,
                 UserName = user.UserName,
-                RefreshToken = refreshToken.Token,
                 ExpiresAt = DateTime.UtcNow.AddHours(24)
             };
         }
 
         public UserView NewUser(NewUserDTO dto)
         {
-            if(_repositoryUser.Get().Any(u => u.Email == dto.Email))
+            if (_repositoryUser.Get().Any(u => u.Email == dto.Email))
             {
                 throw new InvalidOperationException("Email is already registered.");
             }
@@ -91,19 +113,24 @@ namespace Application.Users
         {
             var refresh = _repRefreshToken.Get().FirstOrDefault(r => r.Token == token);
 
+            if (refresh.CreatedByIp != ipAddress || refresh.DeviceId != deviceId || refresh.UserAgent != userAgent)
+            {
+                throw new UnauthorizedAccessException("Refresh token context does not match this device.");
+            }
+
             if (refresh == null || refresh.Revoked != null || refresh.Expires <= DateTime.UtcNow)
             {
                 throw new UnauthorizedAccessException("Invalid refresh token.");
             }
 
             var user = _repositoryUser.GetById(refresh.UserId).uExceptionSeNull("User not found.");
-            var accessToken = JwtTokenHelper.GenerateToken(user.Id, user.Email, user.Name, _jwtSettings.SecretKey, _jwtSettings.Issuer, _jwtSettings.Audience, 24);
+            var accessToken = JwtTokenHelper.GenerateToken(user.Id, user.Email, user.Name, _jwtSettings.SecretKey, _jwtSettings.Issuer, _jwtSettings.Audience, 15);
+
+            var newRefresh = _mapperUser.NewRefreshToken(user, ipAddress, deviceId, userAgent);
 
             refresh.Revoked = DateTime.UtcNow;
             refresh.RevokedByIp = ipAddress;
-            refresh.ReplacedByToken = token;
-
-           var newRefresh = _mapperUser.NewRefreshToken(user, ipAddress, userAgent, deviceId);
+            refresh.ReplacedByToken = newRefresh.Token;
 
             _repRefreshToken.Insert(newRefresh);
             Commit();
