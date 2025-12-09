@@ -43,11 +43,6 @@ namespace Application.Users
 
             if (!PasswordHelper.VerifyPassword(dto.Password, user.PasswordHash, user.PasswordSalt))
             {
-                throw new UnauthorizedAccessException("Invalid credentials.");
-            }
-
-            if (!PasswordHelper.VerifyPassword(dto.Password, user.PasswordHash, user.PasswordSalt))
-            {
                 user.FailedLoginAttempts++;
 
                 if (user.FailedLoginAttempts >= 5)

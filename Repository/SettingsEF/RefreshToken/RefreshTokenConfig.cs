@@ -47,6 +47,15 @@ namespace Repository.SettingsEF.RefreshTokens
             builder.Property(x => x.ReplacedByToken)
                 .HasColumnName("ReplacedByToken");
 
+            builder.Property(x => x.ReplacedByToken)
+                .HasColumnName("ReplacedByToken");
+
+            builder.Property(x => x.DeviceId)
+                .HasColumnName("DeviceId");
+
+            builder.Property(x => x.UserAgent)
+                .HasColumnName("UserAgent");
+
             builder.HasOne(x => x.User)
                 .WithMany()
                 .HasForeignKey(x => x.UserId)
